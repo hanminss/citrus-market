@@ -1,7 +1,8 @@
 import React from "react";
+import Membership from "./membership";
 
-const Join = (props) => {
-  return <div>register</div>;
+const Join = () => {
+  return <Membership />;
 };
 
 export default Join;

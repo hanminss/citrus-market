@@ -33,7 +33,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<NotLogin />} />
           <Route path="/login/*" element={<div>hi</div>} />
-          <Route path="/join/*" element={<Join isLogin={isLogin} />} />
+          <Route path="/join/*" element={<Join />} />
           <Route path="*" element={<div>404</div>} />
         </Routes>
       </BrowserRouter>
