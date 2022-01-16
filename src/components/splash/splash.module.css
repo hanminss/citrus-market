@@ -1,0 +1,14 @@
+.logo_wrap {
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  color: #7e3e9d;
+}
+
+.img_logo {
+  width: 200px;
+  height: 200px;
+}
