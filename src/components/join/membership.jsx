@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useEffect } from "react/cjs/react.development";
-import { checkEmail } from "../../util/fatcher";
+import { checkEmail } from "../../util/fetcher";
 import styles from "./membership.module.css";
 
 const Membership = ({ setEmail, setPwd }) => {
