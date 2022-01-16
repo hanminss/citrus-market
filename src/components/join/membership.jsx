@@ -3,7 +3,7 @@ import { useEffect } from "react/cjs/react.development";
 import { checkEmail } from "../../util/fatcher";
 import styles from "./membership.module.css";
 
-const Membership = () => {
+const Membership = ({ setEmail, setPwd }) => {
   const emailRef = useRef();
   const pwdRef = useRef();
 
@@ -34,6 +34,11 @@ const Membership = () => {
     else setPwdValid(false);
   };
 
+  const handleSubmitData = () => {
+    setEmail(emailRef.current.value);
+    setPwd(pwdRef.current.value);
+  };
+
   useEffect(() => {
     if (emailValid && pwdValid) {
       setValidPass(true);
@@ -57,7 +62,7 @@ const Membership = () => {
             type="email"
             name="email"
             placeholder="이메일 주소를 입력해 주세요."
-            onInput={handleEmailValid}
+            onBlur={handleEmailValid}
           />
           <p id="email_err_msg" className={styles.err_msg}>
             {emailValid
@@ -91,6 +96,7 @@ const Membership = () => {
         {validPass ? (
           <button
             className={`${styles.btn_submit} ${styles.activate}`}
+            onClick={handleSubmitData}
             type="button"
           >
             회원가입
