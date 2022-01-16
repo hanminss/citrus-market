@@ -1,10 +1,46 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import { useEffect } from "react/cjs/react.development";
+import { checkEmail } from "../../util/fatcher";
 import styles from "./membership.module.css";
 
 const Membership = () => {
-  const onBlur = () => {
-    console.log("x");
+  const emailRef = useRef();
+  const pwdRef = useRef();
+
+  const [emailValid, setEmailValid] = useState(null);
+  const [pwdValid, setPwdValid] = useState(null);
+  const [validPass, setValidPass] = useState(false);
+
+  const checkEmailFormet = () => {
+    const regExp =
+      /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
+    return regExp.test(emailRef.current.value);
   };
+
+  const handleEmailValid = () => {
+    if (checkEmailFormet()) {
+      checkEmail("/user/emailvalid", emailRef.current.value).then((res) => {
+        setEmailValid(res);
+      });
+    } else {
+      setEmailValid(null);
+    }
+  };
+
+  const checkPwdFormet = () => (pwdRef.current.value.length > 5 ? true : false);
+
+  const handlePwdValid = () => {
+    if (checkPwdFormet()) setPwdValid(true);
+    else setPwdValid(false);
+  };
+
+  useEffect(() => {
+    if (emailValid && pwdValid) {
+      setValidPass(true);
+    } else {
+      setValidPass(false);
+    }
+  }, [emailValid, pwdValid]);
 
   return (
     <main className={styles.main}>
@@ -17,12 +53,19 @@ const Membership = () => {
           <input
             id="email"
             className={styles.input}
+            ref={emailRef}
             type="email"
             name="email"
             placeholder="이메일 주소를 입력해 주세요."
-            onBlur={onBlur}
+            onInput={handleEmailValid}
           />
-          <p id="email_err_msg" className={styles.err_msg}></p>
+          <p id="email_err_msg" className={styles.err_msg}>
+            {emailValid
+              ? ""
+              : emailValid === null
+              ? ""
+              : "*이미 가입된 이메일 주소 입니다."}
+          </p>
         </div>
         <div className={styles.input_wrap}>
           <label className={styles.label} htmlFor="pwd">
@@ -30,16 +73,33 @@ const Membership = () => {
           </label>
           <input
             id="pwd"
+            ref={pwdRef}
             className={styles.input}
             type="password"
             name="pwd"
             placeholder="비밀번호를 설정해 주세요."
+            onInput={handlePwdValid}
           />
-          <p id="pwd_err_msg" className={styles.err_msg}></p>
+          <p id="pwd_err_msg" className={styles.err_msg}>
+            {pwdValid == null
+              ? ""
+              : pwdValid
+              ? ""
+              : "*비밀번호는 6자 이상이어야 합니다."}
+          </p>
         </div>
-        <button className={styles.btn_submit} type="button" disabled>
-          회원가입
-        </button>
+        {validPass ? (
+          <button
+            className={`${styles.btn_submit} ${styles.activate}`}
+            type="button"
+          >
+            회원가입
+          </button>
+        ) : (
+          <button className={styles.btn_submit} type="button" disabled>
+            회원가입
+          </button>
+        )}
       </form>
     </main>
   );
