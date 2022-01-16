@@ -25,17 +25,3 @@ export const checkEmail = async (url, email) => {
   else if (result.data.message === "잘못된 접근입니다.") return null;
   else return false;
 };
-
-// export const postFetcher = (url, obj) => {
-//   const data = JSON.stringify(obj);
-//   const config = {
-//     method: "post",
-//     url,
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     data,
-//   };
-
-//   return axios(config).then((res) => res.data);
-// };
