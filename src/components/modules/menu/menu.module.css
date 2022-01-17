@@ -14,7 +14,7 @@
   z-index: 10;
 }
 
-button {
+.button {
   background-color: #fff;
   font-size: 10px;
   color: #767676;
@@ -26,13 +26,10 @@ button {
   border: none;
 }
 
-button:last-child {
+.button:last-child {
   margin-right: 0;
 }
-button:focus {
-  outline: none;
-}
-input:focus {
+.button:focus {
   outline: none;
 }
 

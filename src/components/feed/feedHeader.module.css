@@ -1,0 +1,34 @@
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: #ffffff;
+}
+
+.feed_search_container {
+  padding: 0 16px;
+  border-bottom: 0.5px solid #dbdbdb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+}
+.search_bar {
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  color: #000000;
+}
+
+.search_btn {
+  position: relative;
+  border: none;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  padding: 0;
+  background-image: url("./cssImg/search-icon.png");
+  cursor: pointer;
+}

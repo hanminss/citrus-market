@@ -2,8 +2,10 @@ import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useEffect } from "react/cjs/react.development";
 import "./App.css";
+import Feed from "./components/feed/feed";
 import Join from "./components/join/join";
 import Login from "./components/login/login";
+import Layout from "./components/modules/layout";
 import Menu from "./components/modules/menu/menu";
 import NotLogin from "./components/notLogin/notLogin";
 import Splash from "./components/splash/splash";
@@ -27,13 +29,16 @@ const App = () => {
   if (isLogin) {
     return (
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Menu />} />
-          <Route path="/chat" element={<Menu />} />
-          <Route path="/upload" element={<Menu />} />
-          <Route path="/mypage" element={<Menu />} />
-          <Route path="*" element={<div>404</div>} />
-        </Routes>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Feed />} />
+            <Route path="/chat" element={<div>chat</div>} />
+            <Route path="/upload" element={<div>upload</div>} />
+            <Route path="/mypage" element={<div>mypage</div>} />
+            <Route path="/search" element={<div>search</div>} />
+            <Route path="*" element={<div>404</div>} />
+          </Routes>
+        </Layout>
       </BrowserRouter>
     );
   } else {

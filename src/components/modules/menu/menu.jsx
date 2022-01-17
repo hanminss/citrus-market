@@ -8,7 +8,7 @@ const Menu = () => {
 
   return (
     <nav className={styles.menubar}>
-      <button onClick={() => navigate("/")}>
+      <button className={styles.button} onClick={() => navigate("/")}>
         <img
           className={styles.img_btn}
           src={`/images/menu/icon-home${path === "/" ? "-fill" : ""}.png`}
@@ -16,29 +16,29 @@ const Menu = () => {
         />
         <p>홈</p>
       </button>
-      <button onClick={() => navigate("/chat")}>
+      <button className={styles.button} onClick={() => navigate("/chat")}>
         <img
           className={styles.img_btn}
           src={`/images/menu/icon-message-circle${
             path === "/chat" ? "-fill" : ""
           }.png`}
-          alt="btn-chat"
+          alt="채팅 버튼"
         />
         <p>채팅</p>
       </button>
-      <button onClick={() => navigate("/upload")}>
+      <button className={styles.button} onClick={() => navigate("/upload")}>
         <img
           className={styles.img_btn}
           src="/images/menu/icon-edit.png"
-          alt="btn-new-post"
+          alt="글쓰기 버튼"
         />
         <p>게시물 작성</p>
       </button>
-      <button onClick={() => navigate("/mypage")}>
+      <button className={styles.button} onClick={() => navigate("/mypage")}>
         <img
           className={styles.img_btn}
           src={`/images/menu/icon-user${path === "/mypage" ? "-fill" : ""}.png`}
-          alt="btn-home"
+          alt="프로필 버튼"
         />
         <p>프로필</p>
       </button>
