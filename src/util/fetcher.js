@@ -48,3 +48,10 @@ export const profileUpload = async (files) => {
   const result = await axios(createPostConfig("/image/uploadfile", data));
   return result;
 };
+
+export const join = async (body) => {
+  const data = body;
+  const result = await axios(createPostConfig("/user", data));
+
+  return result;
+};

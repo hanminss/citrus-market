@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { join } from "../../util/fetcher";
 import Membership from "./membership";
 import Profile from "./profile";
 
 const Join = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [userName, setUserName] = useState("");
@@ -12,9 +16,26 @@ const Join = () => {
 
   useEffect(() => {
     if (email && pwd && userName && accountName && intro) {
-      console.log(email, pwd, userName, accountName, intro, imgUrl);
+      const body = {
+        user: {
+          email,
+          password: pwd,
+          username: userName,
+          accountname: accountName,
+          intro,
+          image: imgUrl,
+        },
+      };
+      join(body).then((res) => {
+        console.log(res);
+        if (res.data.message === "회원가입 성공") {
+          navigate("/login");
+        } else {
+          alert(`err: ${res.data.message}`);
+        }
+      });
     }
-  }, [email, pwd, userName, accountName, intro, imgUrl]);
+  }, [email, pwd, userName, accountName, intro, imgUrl, navigate]);
 
   if (email && pwd) {
     return (
