@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { login } from "../../util/fetcher";
 import styles from "./login.module.css";
 
 const Login = () => {
@@ -20,7 +21,7 @@ const Login = () => {
   };
 
   const handleEmaliValid = () => {
-    if (!!emailRef.current.value) {
+    if (emailRef.current.value) {
       setEmailSpace(true);
       if (checkEmailFormat()) {
         setEmailFormat(true);
@@ -33,8 +34,23 @@ const Login = () => {
   };
 
   const handlePwdValid = () => {
-    if (!!pwdRef.current.value) setPwdSpace(true);
+    if (pwdRef.current.value) setPwdSpace(true);
     else setPwdSpace(false);
+  };
+
+  const handleSubmitData = () => {
+    const body = {
+      user: {
+        email: emailRef.current.value,
+        password: pwdRef.current.value,
+      },
+    };
+    login(body).then((res) => {
+      if (res.message) {
+        setErrMsg(res.message);
+      } else {
+      }
+    });
   };
 
   useEffect(() => {
@@ -77,6 +93,7 @@ const Login = () => {
             id="submitBtn"
             className={`${styles.btn_submit} ${styles.activate}`}
             type="button"
+            onClick={handleSubmitData}
           >
             로그인
           </button>

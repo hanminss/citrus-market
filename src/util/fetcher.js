@@ -55,3 +55,10 @@ export const join = async (body) => {
 
   return result;
 };
+
+export const login = async (body) => {
+  const data = body;
+  const result = await axios(createPostConfig("/user/login", data));
+
+  return result.data;
+};
