@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { login } from "../../util/fetcher";
 import styles from "./login.module.css";
 import { setCookie } from "../../util/cookie";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = ({ setIsLogin }) => {
   const emailRef = useRef();
@@ -94,6 +94,7 @@ const Login = ({ setIsLogin }) => {
             type="password"
             onBlur={handlePwdValid}
           />
+          <p className={styles.err_msg}></p>
         </div>
         {passValid ? (
           <button
@@ -115,12 +116,9 @@ const Login = ({ setIsLogin }) => {
           </button>
         )}
       </form>
-      <a
-        className={styles.link_register}
-        href="/templates/join_membership.html"
-      >
+      <Link className={styles.link_register} to="/join">
         이메일로 회원가입
-      </a>
+      </Link>
     </main>
   );
 };
