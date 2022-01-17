@@ -1,0 +1,43 @@
+.menubar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  min-width: 390px;
+  border-top: 0.5px solid #dbdbdb;
+  font-size: 10px;
+  line-height: 14px;
+  letter-spacing: 0em;
+  text-align: center;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-evenly;
+  z-index: 10;
+}
+
+button {
+  background-color: #fff;
+  font-size: 10px;
+  color: #767676;
+  display: inline-block;
+  width: 84px;
+  margin-right: 14px;
+  padding: 15px 0 6px 0;
+  cursor: pointer;
+  border: none;
+}
+
+button:last-child {
+  margin-right: 0;
+}
+button:focus {
+  outline: none;
+}
+input:focus {
+  outline: none;
+}
+
+.img_btn {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 6px;
+}

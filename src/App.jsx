@@ -4,6 +4,7 @@ import { useEffect } from "react/cjs/react.development";
 import "./App.css";
 import Join from "./components/join/join";
 import Login from "./components/login/login";
+import Menu from "./components/modules/menu/menu";
 import NotLogin from "./components/notLogin/notLogin";
 import Splash from "./components/splash/splash";
 import { getCookie } from "./util/cookie";
@@ -27,7 +28,10 @@ const App = () => {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<div>login^^</div>} />
+          <Route path="/" element={<Menu />} />
+          <Route path="/chat" element={<Menu />} />
+          <Route path="/upload" element={<Menu />} />
+          <Route path="/mypage" element={<Menu />} />
           <Route path="*" element={<div>404</div>} />
         </Routes>
       </BrowserRouter>

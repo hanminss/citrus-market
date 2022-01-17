@@ -35,7 +35,7 @@ export const checkEmail = async (url, email) => {
 };
 
 export const checkIdDuplication = async (accountName) => {
-  const result = await axios(createGetConfig("/user"));
+  const result = await axios(createGetConfig("/user")).then();
   const idArr = result.data.map((item) => item.accountname);
   if (idArr.indexOf(accountName) === -1) return true;
   else return false;
