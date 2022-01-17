@@ -27,7 +27,6 @@ const Join = () => {
         },
       };
       join(body).then((res) => {
-        console.log(res);
         if (res.data.message === "회원가입 성공") {
           navigate("/login");
         } else {
