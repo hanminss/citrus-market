@@ -11,14 +11,14 @@ const Membership = ({ setEmail, setPwd }) => {
   const [pwdValid, setPwdValid] = useState(null);
   const [validPass, setValidPass] = useState(false);
 
-  const checkEmailFormet = () => {
+  const checkEmailFormat = () => {
     const regExp =
       /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/;
     return regExp.test(emailRef.current.value);
   };
 
   const handleEmailValid = () => {
-    if (checkEmailFormet()) {
+    if (checkEmailFormat()) {
       checkEmail("/user/emailvalid", emailRef.current.value).then((res) => {
         setEmailValid(res);
       });
@@ -27,10 +27,10 @@ const Membership = ({ setEmail, setPwd }) => {
     }
   };
 
-  const checkPwdFormet = () => (pwdRef.current.value.length > 5 ? true : false);
+  const checkPwdFormat = () => (pwdRef.current.value.length > 5 ? true : false);
 
   const handlePwdValid = () => {
-    if (checkPwdFormet()) setPwdValid(true);
+    if (checkPwdFormat()) setPwdValid(true);
     else setPwdValid(false);
   };
 

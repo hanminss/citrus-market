@@ -12,7 +12,7 @@ const Profile = ({ setUserName, setAccountName, setIntro, setImgUrl }) => {
   );
 
   const [userNameValid, setUserNameValid] = useState(null);
-  const [accountNameFormet, setAccountNameFormet] = useState(null);
+  const [accountNameFormat, setAccountNameFormat] = useState(null);
   const [accountNameDuple, setAccountNameDuple] = useState(null);
   const [introValid, setIntroValid] = useState(null);
   const [validPass, setValidPass] = useState(false);
@@ -64,9 +64,9 @@ const Profile = ({ setUserName, setAccountName, setIntro, setImgUrl }) => {
 
   const handleAccountNameValid = () => {
     if (checkAccountName()) {
-      setAccountNameFormet(true);
+      setAccountNameFormat(true);
       checkDuplication();
-    } else setAccountNameFormet(false);
+    } else setAccountNameFormat(false);
   };
 
   const checkIntro = () => (introRef.current.value ? true : false);
@@ -86,10 +86,10 @@ const Profile = ({ setUserName, setAccountName, setIntro, setImgUrl }) => {
   };
 
   useEffect(() => {
-    if (userNameValid && accountNameFormet && accountNameDuple && introValid)
+    if (userNameValid && accountNameFormat && accountNameDuple && introValid)
       setValidPass(true);
     else setValidPass(false);
-  }, [userNameValid, accountNameFormet, accountNameDuple, introValid]);
+  }, [userNameValid, accountNameFormat, accountNameDuple, introValid]);
 
   return (
     <main className={styles.main}>
@@ -155,9 +155,9 @@ const Profile = ({ setUserName, setAccountName, setIntro, setImgUrl }) => {
             onBlur={handleAccountNameValid}
           />
           <p className={styles.err_msg}>
-            {accountNameFormet == null
+            {accountNameFormat == null
               ? ""
-              : !accountNameFormet
+              : !accountNameFormat
               ? "*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다."
               : accountNameDuple == null
               ? ""
