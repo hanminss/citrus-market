@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { login } from "../../util/fetcher";
 import styles from "./login.module.css";
+import { setCookie } from "../../util/cookie";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setIsLogin }) => {
   const emailRef = useRef();
   const pwdRef = useRef();
+  const navigate = useNavigate();
 
   // check flag
   const [emailFormat, setEmailFormat] = useState(null);
@@ -49,6 +52,10 @@ const Login = () => {
       if (res.message) {
         setErrMsg(res.message);
       } else {
+        setCookie("pic_token", res.user.token);
+        setCookie("pic_accountname", res.user.accountname);
+        setIsLogin(true);
+        navigate("/");
       }
     });
   };

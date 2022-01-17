@@ -6,14 +6,18 @@ import Join from "./components/join/join";
 import Login from "./components/login/login";
 import NotLogin from "./components/notLogin/notLogin";
 import Splash from "./components/splash/splash";
+import { getCookie } from "./util/cookie";
 
 const App = () => {
-  const [isLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(false);
   const [splash, setSplash] = useState(false);
 
   useEffect(() => {
+    if (getCookie("pic_token") && getCookie("pic_accountname")) {
+      setIsLogin(true);
+    }
     setTimeout(() => {
-      setSplash("true");
+      setSplash(true);
     }, 1000);
   }, []);
 
@@ -33,7 +37,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<NotLogin />} />
-          <Route path="/login/*" element={<Login />} />
+          <Route path="/login/*" element={<Login setIsLogin={setIsLogin} />} />
           <Route path="/join/*" element={<Join />} />
           <Route path="*" element={<div>404</div>} />
         </Routes>
