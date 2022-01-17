@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
-import { checkIdDuplication } from "../../util/fetcher";
+import React, { useEffect, useRef, useState } from "react";
+import { checkIdDuplication, profileUpload } from "../../util/fetcher";
 import styles from "./profile.module.css";
 
-const Profile = () => {
+const Profile = ({ setUserName, setAccountName, setIntro, setImgUrl }) => {
   const userNameRef = useRef();
   const accountNameRef = useRef();
   const introRef = useRef();
@@ -15,15 +15,27 @@ const Profile = () => {
   const [accountNameFormet, setAccountNameFormet] = useState(null);
   const [accountNameDuple, setAccountNameDuple] = useState(null);
   const [introValid, setIntroValid] = useState(null);
+  const [validPass, setValidPass] = useState(false);
 
   const handleImgPreView = (event) => {
-    // console.log(imgRef.current.files);
-    let reader = new FileReader();
+    if (imgRef.current.files.length) {
+      let reader = new FileReader();
 
-    reader.onload = (event) => {
-      setProfileImg(event.target.result);
-    };
-    reader.readAsDataURL(event.target.files[0]);
+      reader.onload = (event) => {
+        setProfileImg(event.target.result);
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    } else {
+      setProfileImg("/images/profile/basic-profile-img.png");
+    }
+  };
+
+  const profileUpload = () => {
+    if (imgRef.current.files.length) {
+      profileUpload(imgRef.current.files).then((res) => {
+        setImgUrl(res.data.filename);
+      });
+    }
   };
 
   const checkUserName = () =>
@@ -64,6 +76,19 @@ const Profile = () => {
     else setIntroValid(false);
   };
 
+  const handleSubmitData = () => {
+    profileUpload();
+    setUserName(userNameRef.current.value);
+    setAccountName(accountNameRef.current.value);
+    setIntro(introRef.current.value);
+  };
+
+  useEffect(() => {
+    if (userNameValid && accountNameFormet && accountNameDuple && introValid)
+      setValidPass(true);
+    else setValidPass(false);
+  }, [userNameValid, accountNameFormet, accountNameDuple, introValid]);
+
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>프로필 설정</h1>
@@ -89,8 +114,8 @@ const Profile = () => {
             type="file"
             id="uploadImg"
             accept="image/*"
-            hidden
             onChange={handleImgPreView}
+            hidden
           />
         </div>
         {/*  */}
@@ -160,9 +185,19 @@ const Profile = () => {
               : ""}
           </p>
         </div>
-        <button className={styles.btn_submit} type="button" disabled>
-          PIC 시작하기
-        </button>
+        {validPass ? (
+          <button
+            className={`${styles.btn_submit} ${styles.activate}`}
+            type="button"
+            onClick={handleSubmitData}
+          >
+            PIC 시작하기
+          </button>
+        ) : (
+          <button className={styles.btn_submit} type="button" disabled>
+            PIC 시작하기
+          </button>
+        )}
       </form>
     </main>
   );

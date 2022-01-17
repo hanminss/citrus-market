@@ -40,3 +40,11 @@ export const checkIdDuplication = async (accountName) => {
   if (idArr.indexOf(accountName) === -1) return true;
   else return false;
 };
+
+export const profileUpload = async (files) => {
+  const data = new FormData();
+  data.append("image", files[0], files[0].name);
+
+  const result = await axios(createPostConfig("/image/uploadfile", data));
+  return result;
+};
