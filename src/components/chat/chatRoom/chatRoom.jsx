@@ -1,10 +1,12 @@
 import React from "react";
 import ChatRoomHeader from "./chatRoomHeader";
+import InputBar from "./inputBar";
 
-const ChatRoom = (props) => {
+const ChatRoom = () => {
   return (
     <>
       <ChatRoomHeader />
+      <InputBar />
     </>
   );
 };

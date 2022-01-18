@@ -1,0 +1,45 @@
+.bar_menu {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top: 0.5px solid #dbdbdb;
+  text-align: center;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 20px 12px 16px;
+}
+
+.input_wrap {
+  display: flex;
+  align-items: top;
+  gap: 18px;
+}
+
+.input_msg {
+  border: none;
+  font-size: 14px;
+  line-height: 18px;
+  width: 250px;
+}
+
+.input_msg:focus {
+  outline: none;
+}
+
+.input_msg::placeholder {
+  color: #c4c4c4;
+}
+
+.send_btn {
+  border: none;
+  padding: 0;
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 18px;
+  color: #c4c4c4;
+}
+
+.send_active {
+  color: #f26e22;
+}
