@@ -1,0 +1,33 @@
+.other_chat {
+  display: flex;
+  gap: 12px;
+}
+
+.profile_img {
+  width: 42px;
+  height: 42px;
+}
+
+.text_wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.bubble {
+  max-width: 240px;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.other_bubble {
+  background-color: #fff;
+  border: 1px solid #c4c4c4;
+  border-top-left-radius: 0;
+}
+
+.text_time {
+  font-size: 10px;
+  line-height: 13px;
+  color: #767676;
+}

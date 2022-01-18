@@ -1,0 +1,9 @@
+.main {
+  background-color: #f2f2f2;
+  height: calc(100vh - 66px);
+  padding: 69px 16px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+}
