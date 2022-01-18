@@ -32,3 +32,46 @@
   width: 24px;
   height: 24px;
 }
+
+/* modal */
+.modal_wrap {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  top: 0;
+  z-index: 10;
+}
+.modal_out {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 100px);
+  top: 0;
+}
+
+.modal {
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 90px;
+  animation: 1s modalUp;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.modal_bar {
+  width: 50px;
+  border-bottom: 4px solid #dbdbdb;
+  margin: 16px auto;
+}
+
+.outBtn {
+  padding: 14px 26px;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  line-height: 18px;
+  background-color: #fff;
+  border: none;
+}
