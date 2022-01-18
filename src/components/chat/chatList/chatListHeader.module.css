@@ -1,0 +1,19 @@
+.header {
+  padding: 10px 12px 10px 16px;
+  border-bottom: 0.5px solid #dbdbdb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
+
+.btn {
+  border: none;
+  padding: 0;
+  background-color: #fff;
+}
+
+.header_img {
+  width: 24px;
+  height: 24px;
+}
