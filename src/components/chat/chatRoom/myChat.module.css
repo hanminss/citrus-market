@@ -1,0 +1,20 @@
+.my_chat {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.bubble {
+  max-width: 240px;
+  padding: 12px;
+  border-radius: 10px;
+  background-color: #f26e22;
+  color: #fff;
+}
+
+.text_time {
+  font-size: 10px;
+  line-height: 13px;
+  color: #767676;
+}
