@@ -4,7 +4,7 @@ import styles from "./feedHeader.module.css";
 const FeedHeader = () => {
   const navigate = useNavigate();
   return (
-    <header>
+    <header className={styles.header}>
       <article className={styles.feed_search_container}>
         <p className={styles.search_bar}>계정 검색</p>
         <button
