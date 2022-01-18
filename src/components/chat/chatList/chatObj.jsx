@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./chatObj.module.css";
 const ChatObj = ({ data }) => (
-  <Link to="#">
+  <Link to="/chat/chatroom">
     <article className={styles.chat}>
       <div className={styles.img_wrap}>
         <img

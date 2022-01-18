@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./chatListHeader.module.css";
+import styles from "./threeDotHeader.module.css";
 
-const ChatListHeader = () => {
+const ThreeDotHeader = () => {
   const navigate = useNavigate();
   return (
     <header className={styles.header}>
@@ -13,6 +13,7 @@ const ChatListHeader = () => {
           alt="뒤로가기"
         />
       </button>
+
       <button className={styles.btn}>
         <img
           className={styles.header_img}
@@ -24,4 +25,4 @@ const ChatListHeader = () => {
   );
 };
 
-export default ChatListHeader;
+export default ThreeDotHeader;

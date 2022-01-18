@@ -1,15 +1,15 @@
 import React from "react";
 import Menu from "../../modules/menu/menu";
-import ChatListHeader from "./chatListHeader";
 import styles from "./chatList.module.css";
 import ChatObj from "./chatObj";
 import { CHATEX } from "../../../constants";
+import ThreeDotHeader from "../../modules/header/threeDotHeader";
 
 const ChatList = () => {
   const data = CHATEX;
   return (
     <>
-      <ChatListHeader />
+      <ThreeDotHeader />
       <Menu />
       <main className={styles.main}>
         {data.map((chatData, idx) => {

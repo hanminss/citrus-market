@@ -1,0 +1,34 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 10px 12px 10px 16px;
+  border-bottom: 0.5px solid #dbdbdb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
+
+.header_wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header_title {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.btn {
+  border: none;
+  padding: 0;
+  background-color: #fff;
+}
+
+.header_img {
+  width: 24px;
+  height: 24px;
+}
