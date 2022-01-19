@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useCallback, useRef } from "react";
 import UploadHeader from "./uploadHeader";
 import styles from "./upload.module.css";
 
 const Upload = () => {
+  const textRef = useRef();
+
+  const handleResizeHeight = useCallback(() => {
+    textRef.current.style.height = textRef.current.scrollHeight + "px";
+  }, []);
+
   return (
     <>
       <UploadHeader />
@@ -16,12 +22,10 @@ const Upload = () => {
         </div>
         <div>
           <textarea
+            ref={textRef}
             className={styles.content_text}
-            name="content"
-            id="content"
-            // onkeydown="resize(this)"
-            // onkeyup="resize(this)"
             placeholder="게시글 입력하기.."
+            onInput={handleResizeHeight}
           />
           <div className={styles.imgs_wrap}></div>
           <label className={styles.img_upload_btn} htmlFor="img_upload">
