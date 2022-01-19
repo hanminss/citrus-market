@@ -1,32 +1,32 @@
 import React from "react";
 import UploadHeader from "./uploadHeader";
+import styles from "./upload.module.css";
 
 const Upload = () => {
   return (
     <>
       <UploadHeader />
-      <main className="content_wrap">
-        <div className="profile_wrap">
+      <main className={styles.main}>
+        <div className={styles.profile_wrap}>
           <img
-            id="profileImg"
-            className="img_profile"
+            className={styles.img_profile}
             src="/images/publicImg/basic-profile-img.png"
             alt="profile"
           />
         </div>
         <div>
           <textarea
-            className="content_text"
+            className={styles.content_text}
             name="content"
             id="content"
             // onkeydown="resize(this)"
             // onkeyup="resize(this)"
             placeholder="게시글 입력하기.."
           />
-          <div className="imgs_wrap"></div>
-          <label className="img_upload_btn" htmlFor="img_upload">
+          <div className={styles.imgs_wrap}></div>
+          <label className={styles.img_upload_btn} htmlFor="img_upload">
             <img
-              className="img_upload_btn"
+              className={styles.img_upload_btn}
               src="/images/publicImg/upload-file.png"
               alt="사진 업로드 버튼"
             />
