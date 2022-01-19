@@ -1,6 +1,8 @@
 import React, { useCallback, useRef, useState } from "react";
 import UploadHeader from "./uploadHeader";
 import styles from "./upload.module.css";
+import SingleImg from "./singleImg";
+import MultiImg from "./multiImg";
 
 const Upload = () => {
   const textRef = useRef();
@@ -71,28 +73,16 @@ const Upload = () => {
 
           <div className={styles.imgs_wrap}>
             {imgUrls.length === 1 ? (
-              <div className={styles.img_wrap}>
-                <img className={styles.img_single} src={imgUrls[0]} alt="" />
-                <img
-                  className={styles.btn_x}
-                  src="/images/upload/x.svg"
-                  onClick={deleteSingleImg}
-                  alt=""
-                />
-              </div>
+              <SingleImg path={imgUrls[0]} deleteSingleImg={deleteSingleImg} />
             ) : (
               imgUrls.map((item, idx) => {
                 return (
-                  <div id={idx} className={styles.img_wrap} key={idx}>
-                    <img className={styles.img_multi} src={item} alt="" />
-                    <img
-                      data-index={idx}
-                      className={styles.btn_x}
-                      src="/images/upload/x.svg"
-                      onClick={() => deleteMultiImg(idx)}
-                      alt=""
-                    />
-                  </div>
+                  <MultiImg
+                    key={`key-${idx}`}
+                    path={item}
+                    idx={idx}
+                    deleteMultiImg={deleteMultiImg}
+                  />
                 );
               })
             )}
