@@ -1,0 +1,34 @@
+.header {
+  padding: 10px 12px 10px 16px;
+  border-bottom: 0.5px solid #dbdbdb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
+
+.btn {
+  border: none;
+  padding: 0;
+  background-color: #fff;
+}
+
+.submit_btn {
+  padding: 7px 32px;
+  background-color: #ffc7a7;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #fff;
+  border: none;
+  border-radius: 32px;
+}
+
+.activate {
+  background-color: #f26e22;
+}
+
+.header_img {
+  width: 24px;
+  height: 24px;
+}

@@ -8,6 +8,7 @@ import Join from "./components/join/join";
 import Login from "./components/login/login";
 import NotLogin from "./components/notLogin/notLogin";
 import Splash from "./components/splash/splash";
+import Upload from "./components/upload/upload";
 import { getCookie } from "./util/cookie";
 
 const App = () => {
@@ -31,7 +32,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Feed />} />
           <Route path="/chat/*" element={<Chat />} />
-          <Route path="/upload" element={<div>upload</div>} />
+          <Route path="/upload" element={<Upload />} />
           <Route path="/mypage" element={<div>mypage</div>} />
           <Route path="/search" element={<div>search</div>} />
           <Route path="*" element={<div>404</div>} />
