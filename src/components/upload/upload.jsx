@@ -16,7 +16,7 @@ const Upload = () => {
     } else if (fileLength > 0) {
       const files = Array.from(imgRef.current.files);
 
-      files.forEach((file, idx) => {
+      files.forEach((_, idx) => {
         let reader = new FileReader();
         reader.onload = (event) => {
           setImgUrls((imgUrls) => [...imgUrls, event.target.result]);
@@ -24,6 +24,26 @@ const Upload = () => {
         reader.readAsDataURL(e.target.files[idx]);
       });
     }
+  };
+
+  const deleteSingleImg = () => {
+    setImgUrls([]);
+    imgRef.current.value = "";
+  };
+
+  const deleteMultiImg = (idx) => {
+    const temp = imgUrls;
+    temp.splice(idx, 1);
+    setImgUrls(() => [...temp]);
+    const dataTranster = new DataTransfer();
+    Array.from(imgRef.current.files)
+      .filter((_, i) => i !== idx)
+      .forEach((file) => {
+        // 지우려는 파일을 제외한 배열을 datatranster에 넣어준다.
+        dataTranster.items.add(file);
+      });
+    // fileInput의 파일을 dataTranster.files로 바꿔준다.
+    imgRef.current.files = dataTranster.files;
   };
 
   const handleResizeHeight = useCallback(() => {
@@ -56,7 +76,7 @@ const Upload = () => {
                 <img
                   className={styles.btn_x}
                   src="/images/upload/x.svg"
-                  // onclick="deleteMultiImg(this)"
+                  onClick={deleteSingleImg}
                   alt=""
                 />
               </div>
@@ -69,7 +89,7 @@ const Upload = () => {
                       data-index={idx}
                       className={styles.btn_x}
                       src="/images/upload/x.svg"
-                      // onclick="deleteMultiImg(this)"
+                      onClick={() => deleteMultiImg(idx)}
                       alt=""
                     />
                   </div>
@@ -91,7 +111,7 @@ const Upload = () => {
             ref={imgRef}
             onChange={handleImgUpload}
             multiple
-            // hidden
+            hidden
           />
         </div>
       </main>
