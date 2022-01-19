@@ -30,9 +30,9 @@ const Profile = ({ setUserName, setAccountName, setIntro, setImgUrl }) => {
     }
   };
 
-  const imgUpload = () => {
+  const imgUpload = async () => {
     if (imgRef.current.files.length) {
-      profileUpload(imgRef.current.files).then((res) => {
+      return await profileUpload(imgRef.current.files).then((res) => {
         setImgUrl(res.data.filename);
       });
     }
@@ -77,12 +77,11 @@ const Profile = ({ setUserName, setAccountName, setIntro, setImgUrl }) => {
   };
 
   const handleSubmitData = () => {
-    imgUpload();
-    setTimeout(() => {
+    imgUpload().then(() => {
       setUserName(userNameRef.current.value);
       setAccountName(accountNameRef.current.value);
       setIntro(introRef.current.value);
-    }, 100);
+    });
   };
 
   useEffect(() => {
