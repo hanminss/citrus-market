@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import UploadHeader from "./uploadHeader";
 import styles from "./upload.module.css";
 import SingleImg from "./singleImg";
@@ -8,6 +8,12 @@ const Upload = () => {
   const textRef = useRef();
   const imgRef = useRef();
   const [imgUrls, setImgUrls] = useState([]);
+  const [validPass, setValidPasss] = useState(false);
+
+  const handleResizeHeight = useCallback(() => {
+    textRef.current.style.height = textRef.current.scrollHeight + "px";
+    checkValid();
+  }, []);
 
   const handleImgUpload = (e) => {
     setImgUrls([]);
@@ -26,11 +32,13 @@ const Upload = () => {
         reader.readAsDataURL(e.target.files[idx]);
       });
     }
+    checkValid();
   };
 
   const deleteSingleImg = () => {
     setImgUrls([]);
     imgRef.current.value = "";
+    checkValid();
   };
 
   const deleteMultiImg = (idx) => {
@@ -48,13 +56,17 @@ const Upload = () => {
     imgRef.current.files = dataTranster.files;
   };
 
-  const handleResizeHeight = useCallback(() => {
-    textRef.current.style.height = textRef.current.scrollHeight + "px";
-  }, []);
+  const checkValid = () => {
+    if (imgRef.current.files.length || textRef.current.value) {
+      setValidPasss(true);
+    } else {
+      setValidPasss(false);
+    }
+  };
 
   return (
     <>
-      <UploadHeader />
+      <UploadHeader validPass={validPass} />
       <main className={styles.main}>
         <div className={styles.profile_wrap}>
           <img

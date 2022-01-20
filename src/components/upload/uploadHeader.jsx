@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./uploadHeader.module.css";
 
-const UploadHeader = () => {
+const UploadHeader = ({ validPass }) => {
   const navigate = useNavigate();
   return (
     <header className={styles.header}>
@@ -14,7 +14,15 @@ const UploadHeader = () => {
         />
       </button>
 
-      <button className={styles.submit_btn}>업로드</button>
+      {validPass ? (
+        <button className={`${styles.submit_btn} ${styles.activate}`}>
+          업로드
+        </button>
+      ) : (
+        <button className={styles.submit_btn} disabled>
+          업로드
+        </button>
+      )}
     </header>
   );
 };
