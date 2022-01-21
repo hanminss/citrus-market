@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./postCard.module.css";
 
 const PostCard = ({ post }) => {
-  console.log(post);
   const [year, month, day] = post.createdAt.slice(0, 10).split("-");
   return (
     <article className={styles.post_card}>
@@ -14,20 +13,37 @@ const PostCard = ({ post }) => {
         />
       </div>
       <div>
-        <h2 className={styles.authorName}>{post.author.username}</h2>
-        <p className={styles.authorID}>@{post.author.accountname}</p>
+        <div className={styles.flex_wrap}>
+          <div>
+            <h2 className={styles.authorName}>{post.author.username}</h2>
+            <p className={styles.authorID}>@{post.author.accountname}</p>
+          </div>
+          <button>
+            <img src="/images/publicImg/s-icon-more-vertical.png" alt="" />
+          </button>
+        </div>
         <p className={styles.content}>{post.content}</p>
         <div className={styles.postImg_wrap}>
-          {post.image.split(",").map((item, key) => {
-            return (
-              <img
-                key={key}
-                className={styles.single_img}
-                src={`http://146.56.183.55:5050/${item}`}
-                alt=""
-              />
-            );
-          })}
+          {!post.image ? (
+            ""
+          ) : post.image.split(",").length === 1 ? (
+            <img
+              className={styles.single_img}
+              src={`http://146.56.183.55:5050/${post.image}`}
+              alt=""
+            />
+          ) : (
+            post.image.split(",").map((item, key) => {
+              return (
+                <img
+                  key={key}
+                  className={styles.multi_img}
+                  src={`http://146.56.183.55:5050/${item}`}
+                  alt=""
+                />
+              );
+            })
+          )}
         </div>
         <div className={styles.button_wrap}>
           <img src="/images/mypage/icon-heart.png" alt="좋아요 누르기" />

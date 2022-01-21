@@ -30,7 +30,9 @@ const PostSection = ({ token, accountname }) => {
       <div className={styles.postList}>
         {posts ? (
           <>
-            <PostCard post={posts[0]} />
+            {posts.map((post, idx) => {
+              return <PostCard key={`post-key-${idx}`} post={post} />;
+            })}
           </>
         ) : (
           <p>Loading...</p>

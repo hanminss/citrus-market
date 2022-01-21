@@ -2,7 +2,8 @@
   display: flex;
   gap: 12px;
   background-color: #fff;
-  padding: 16px 21px;
+  padding: 16px 15px;
+  justify-content: center;
 }
 
 .img_wrap {
@@ -16,6 +17,17 @@
   height: 42px;
   border-radius: 50%;
   top: -70px;
+}
+
+.flex_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.flex_wrap button {
+  background-color: #fff;
+  border: none;
+  padding: 0;
 }
 
 .authorName {
@@ -40,7 +52,15 @@
 }
 
 .postImg_wrap {
+  display: flex;
+  width: 304px;
   margin-bottom: 12px;
+  overflow-x: auto;
+  gap: 8px;
+}
+
+.postImg_wrap::-webkit-scrollbar {
+  display: none;
 }
 
 .single_img {
@@ -48,6 +68,13 @@
   height: 228px;
   border: 0.5px solid #dbdbdb;
   border-radius: 10px;
+}
+
+.multi_img {
+  width: 168px;
+  height: 126px;
+  border-radius: 10px;
+  border: 1px solid #bdbdbd;
 }
 
 .button_wrap {
