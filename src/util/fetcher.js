@@ -28,7 +28,19 @@ const createPostConfigWithToken = (url, data, token) => {
       Authorization: "Bearer " + token,
       "Content-Type": "application/json",
     },
-    data: data,
+    data: data ? data : "",
+  };
+};
+
+const createGetConfigWithToken = (url, data, token) => {
+  return {
+    method: "get",
+    url: API_END_POINT + url,
+    headers: {
+      Authorization: "Bearer " + token,
+      "Content-Type": "application/json",
+    },
+    data: data ? data : "",
   };
 };
 
@@ -87,5 +99,12 @@ export const login = async (body) => {
 
 export const postUpload = async (body, token) => {
   const result = await axios(createPostConfigWithToken("/post", body, token));
+  return result;
+};
+
+export const getMyInfo = async (accountName, token) => {
+  const result = await axios(
+    createGetConfigWithToken(`/profile/${accountName}`, false, token)
+  );
   return result;
 };
