@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getMyPosts } from "../../util/fetcher";
+import PostCard from "./postCard";
 import styles from "./postSection.module.css";
 
 const PostSection = ({ token, accountname }) => {
@@ -12,7 +13,7 @@ const PostSection = ({ token, accountname }) => {
       .catch((err) => {
         alert("err: ", err);
       });
-  });
+  }, []);
   return (
     <section>
       <nav className={styles.post_nav}>
@@ -25,7 +26,16 @@ const PostSection = ({ token, accountname }) => {
           alt="게시글 목록으로 보기"
         />
       </nav>
-      {posts ? <p>yes</p> : <p>No</p>}
+
+      <div className={styles.postList}>
+        {posts ? (
+          <>
+            <PostCard post={posts[0]} />
+          </>
+        ) : (
+          <p>Loading...</p>
+        )}
+      </div>
     </section>
   );
 };
