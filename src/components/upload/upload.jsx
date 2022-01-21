@@ -14,7 +14,9 @@ const Upload = () => {
 
   const [imgUrls, setImgUrls] = useState([]);
   const [validPass, setValidPasss] = useState(false);
+
   const token = getCookie("pic_token");
+  const profile = "http://146.56.183.55:5050/" + getCookie("pic_profile");
 
   const handleResizeHeight = useCallback(() => {
     textRef.current.style.height = textRef.current.scrollHeight + "px";
@@ -119,11 +121,7 @@ const Upload = () => {
       <UploadHeader validPass={validPass} handleOnSubmit={handleOnSubmit} />
       <main className={styles.main}>
         <div className={styles.profile_wrap}>
-          <img
-            className={styles.img_profile}
-            src="/images/publicImg/basic-profile-img.png"
-            alt="profile"
-          />
+          <img className={styles.img_profile} src={profile} alt="profile" />
         </div>
         <div>
           <textarea

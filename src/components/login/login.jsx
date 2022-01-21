@@ -54,6 +54,7 @@ const Login = ({ setIsLogin }) => {
       } else {
         setCookie("pic_token", res.user.token);
         setCookie("pic_accountname", res.user.accountname);
+        setCookie("pic_profile", res.user.image);
         setIsLogin(true);
         navigate("/");
       }
