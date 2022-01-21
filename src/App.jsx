@@ -9,6 +9,7 @@ import Login from "./components/login/login";
 import NotLogin from "./components/notLogin/notLogin";
 import Splash from "./components/splash/splash";
 import Upload from "./components/upload/upload";
+import Mypage from "./components/mypage/mypage";
 import { getCookie } from "./util/cookie";
 
 const App = () => {
@@ -33,7 +34,7 @@ const App = () => {
           <Route path="/" element={<Feed />} />
           <Route path="/chat/*" element={<Chat />} />
           <Route path="/upload" element={<Upload />} />
-          <Route path="/mypage" element={<div>mypage</div>} />
+          <Route path="/mypage" element={<Mypage />} />
           <Route path="/search" element={<div>search</div>} />
           <Route path="*" element={<div>404</div>} />
         </Routes>
