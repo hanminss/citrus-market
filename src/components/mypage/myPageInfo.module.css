@@ -2,17 +2,21 @@
   margin-bottom: 6px;
   background-color: #fff;
 }
+
 .profile_wrap {
   display: flex;
   text-align: center;
-  justify-content: space-around;
-  padding-top: 65px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 56px 16px 56px;
 }
+
 .profile_num {
   font-size: 18px;
   line-height: 23px;
   font-weight: bold;
 }
+
 .profile_txt {
   font-size: 10px;
   line-height: 12px;
@@ -27,14 +31,7 @@
   width: 110px;
   height: 110px;
   border-radius: 50%;
-  position: relative;
   top: -70px;
-}
-
-.profile_container,
-.profile_link {
-  position: relative;
-  top: -50px;
 }
 
 .profile_container {
@@ -64,8 +61,7 @@
 .profile_link {
   display: flex;
   justify-content: center;
-  margin-top: 26px;
-  margin-bottom: 26px;
+  padding: 26px 0;
 }
 
 .profile_link button {

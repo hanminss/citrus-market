@@ -5,6 +5,8 @@ import { getMyInfo } from "../../util/fetcher";
 import ThreeDotHeader from "../modules/header/threeDotHeader";
 import Menu from "../modules/menu/menu";
 import MyPageInfo from "./myPageInfo";
+import styles from "./mypage.module.css";
+import PostSection from "./postSection";
 
 const Mypage = () => {
   const accoutName = getCookie("pic_accountname");
@@ -21,8 +23,15 @@ const Mypage = () => {
     <>
       <ThreeDotHeader />
       <Menu />
-      <main>
-        {myInfo ? <MyPageInfo myInfo={myInfo} /> : <p>Loading....</p>}
+      <main className={styles.mypage_main}>
+        {myInfo ? (
+          <>
+            <MyPageInfo myInfo={myInfo} />
+            <PostSection />
+          </>
+        ) : (
+          <p>Loading....</p>
+        )}
       </main>
     </>
   );

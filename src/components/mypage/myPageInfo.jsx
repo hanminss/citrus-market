@@ -10,18 +10,19 @@ const MyPageInfo = ({ myInfo }) => {
           <p className={styles.profile_num}>{myInfo.followerCount}</p>
           <p className={styles.profile_txt}>followers</p>
         </div>
+        <div className={styles.profile_img}>
+          <img
+            src={`http://146.56.183.55:5050/${myInfo.image}`}
+            alt="프로필 이미지"
+            id="profile-img"
+          />
+        </div>
         <div>
           <p className={styles.profile_num}>{myInfo.followingCount}</p>
           <p className={styles.profile_txt}>followings</p>
         </div>
       </div>
-      <div className={styles.profile_img}>
-        <img
-          src={`http://146.56.183.55:5050/${myInfo.image}`}
-          alt="프로필 이미지"
-          id="profile-img"
-        />
-      </div>
+
       <div className={styles.profile_container}>
         <p className={styles.profile_name}>{myInfo.username}</p>
         <p className={styles.profile_id}>@{myInfo.accountname}</p>
