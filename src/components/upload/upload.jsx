@@ -3,12 +3,14 @@ import UploadHeader from "./uploadHeader";
 import styles from "./upload.module.css";
 import SingleImg from "./singleImg";
 import MultiImg from "./multiImg";
+import { imgsUpload } from "../../util/fetcher";
 
 const Upload = () => {
   const textRef = useRef();
   const imgRef = useRef();
   const [imgUrls, setImgUrls] = useState([]);
   const [validPass, setValidPasss] = useState(false);
+  const [imgsPath, setImgsPath] = useState("");
 
   const handleResizeHeight = useCallback(() => {
     textRef.current.style.height = textRef.current.scrollHeight + "px";
@@ -64,9 +66,21 @@ const Upload = () => {
     }
   };
 
+  const imgUpload = async () => {
+    if (imgRef.current.files.length) {
+      return await imgsUpload(imgRef.current.files).then((res) => {
+        setImgsPath(res);
+      });
+    }
+  };
+
+  const handleOnSubmit = () => {
+    imgUpload(imgRef.current.files);
+  };
+
   return (
     <>
-      <UploadHeader validPass={validPass} />
+      <UploadHeader validPass={validPass} handleOnSubmit={handleOnSubmit} />
       <main className={styles.main}>
         <div className={styles.profile_wrap}>
           <img

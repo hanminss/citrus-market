@@ -12,7 +12,7 @@ const Join = () => {
   const [userName, setUserName] = useState("");
   const [accountName, setAccountName] = useState("");
   const [intro, setIntro] = useState("");
-  const [imgUrl, setImgUrl] = useState("1641803765586.png");
+  const [imgUrl, setImgUrl] = useState("1642573050179.png");
 
   useEffect(() => {
     if (email && pwd && userName && accountName && intro) {

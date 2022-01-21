@@ -49,6 +49,18 @@ export const profileUpload = async (files) => {
   return result;
 };
 
+export const imgsUpload = async (files) => {
+  const data = new FormData();
+
+  for (let i = 0; i < files.length; i++) {
+    data.append("image", files[i], files[i].name);
+  }
+
+  return await axios(createPostConfig("/image/uploadfiles", data)).then((res) =>
+    res.data.map((item) => item.filename).join()
+  );
+};
+
 export const join = async (body) => {
   const data = body;
   const result = await axios(createPostConfig("/user", data));
