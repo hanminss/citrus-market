@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./myPageInfo.module.css";
 
 const MyPageInfo = ({ myInfo }) => {
-  console.log(myInfo);
   return (
     <section className={styles.prfileSection}>
       <div className={styles.profile_wrap}>

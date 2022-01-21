@@ -108,3 +108,10 @@ export const getMyInfo = async (accountName, token) => {
   );
   return result;
 };
+
+export const getMyPosts = async (accountName, token) => {
+  const result = await axios(
+    createGetConfigWithToken(`/post/${accountName}/userpost`, false, token)
+  );
+  return result;
+};

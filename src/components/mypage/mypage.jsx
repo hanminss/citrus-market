@@ -27,7 +27,7 @@ const Mypage = () => {
         {myInfo ? (
           <>
             <MyPageInfo myInfo={myInfo} />
-            <PostSection />
+            <PostSection accountname={myInfo.accountname} token={token} />
           </>
         ) : (
           <p>Loading....</p>
