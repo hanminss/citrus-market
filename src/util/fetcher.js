@@ -20,6 +20,18 @@ const createPostConfig = (url, data) => {
   };
 };
 
+const createPostConfigWithToken = (url, data, token) => {
+  return {
+    method: "post",
+    url: API_END_POINT + url,
+    headers: {
+      Authorization: "Bearer " + token,
+      "Content-Type": "application/json",
+    },
+    data: data,
+  };
+};
+
 export const checkEmail = async (url, email) => {
   const data = {
     user: {
@@ -62,15 +74,18 @@ export const imgsUpload = async (files) => {
 };
 
 export const join = async (body) => {
-  const data = body;
-  const result = await axios(createPostConfig("/user", data));
+  const result = await axios(createPostConfig("/user", body));
 
   return result;
 };
 
 export const login = async (body) => {
-  const data = body;
-  const result = await axios(createPostConfig("/user/login", data));
+  const result = await axios(createPostConfig("/user/login", body));
 
   return result.data;
+};
+
+export const postUpload = async (body, token) => {
+  const result = await axios(createPostConfigWithToken("/post", body, token));
+  return result;
 };

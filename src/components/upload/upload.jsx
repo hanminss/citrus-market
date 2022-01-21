@@ -3,14 +3,18 @@ import UploadHeader from "./uploadHeader";
 import styles from "./upload.module.css";
 import SingleImg from "./singleImg";
 import MultiImg from "./multiImg";
-import { imgsUpload } from "../../util/fetcher";
+import { imgsUpload, postUpload } from "../../util/fetcher";
+import { getCookie } from "../../util/cookie";
+import { useNavigate } from "react-router-dom";
 
 const Upload = () => {
   const textRef = useRef();
   const imgRef = useRef();
+  const navigate = useNavigate();
+
   const [imgUrls, setImgUrls] = useState([]);
   const [validPass, setValidPasss] = useState(false);
-  const [imgsPath, setImgsPath] = useState("");
+  const token = getCookie("pic_token");
 
   const handleResizeHeight = useCallback(() => {
     textRef.current.style.height = textRef.current.scrollHeight + "px";
@@ -67,15 +71,47 @@ const Upload = () => {
   };
 
   const imgUpload = async () => {
-    if (imgRef.current.files.length) {
-      return await imgsUpload(imgRef.current.files).then((res) => {
-        setImgsPath(res);
+    return imgsUpload(imgRef.current.files).catch((err) => {
+      alert("이미지 업로드 에러입니다.");
+    });
+  };
+
+  const posting = async (data) => {
+    await postUpload(data, token)
+      .then((res) => {
+        if (res.status !== 200) {
+          alert("err:", res.status);
+          return false;
+        } else {
+          alert("게시글이 등록되었습니다.");
+          return true;
+        }
+      })
+      .then((res) => {
+        if (res) {
+          navigate("/mypage");
+        }
+      })
+      .catch((err) => {
+        alert("포스팅 에러입니다.");
       });
-    }
   };
 
   const handleOnSubmit = () => {
-    imgUpload(imgRef.current.files);
+    const data = {
+      post: {
+        content: textRef.current.value,
+        image: "",
+      },
+    };
+    if (imgRef.current.files.length) {
+      imgUpload(imgRef.current.files).then((res) => {
+        data.post.image = res;
+        posting(data);
+      });
+    } else {
+      posting(data);
+    }
   };
 
   return (
