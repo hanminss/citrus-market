@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./postModal.module.css";
-const PostModal = () => {
+const PostModal = ({ handleModal }) => {
   return (
     <>
       <section className={styles.model_wrap}>
-        <div className={styles.modal_out} />
+        <div className={styles.modal_out} onClick={() => handleModal("")} />
         <div className={styles.modal}>
           <div className={styles.modal_bar} />
           <button className={styles.modalBtn}>수정</button>

@@ -1,8 +1,7 @@
 import React from "react";
-import PostModal from "../modules/modal/postModal";
 import styles from "./postCard.module.css";
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, handleModal }) => {
   const [year, month, day] = post.createdAt.slice(0, 10).split("-");
   return (
     <article className={styles.post_card}>
@@ -19,7 +18,7 @@ const PostCard = ({ post }) => {
             <h2 className={styles.authorName}>{post.author.username}</h2>
             <p className={styles.authorID}>@{post.author.accountname}</p>
           </div>
-          <button>
+          <button onClick={() => handleModal(post.id)}>
             <img src="/images/publicImg/s-icon-more-vertical.png" alt="" />
           </button>
         </div>
@@ -54,7 +53,6 @@ const PostCard = ({ post }) => {
         </div>
         <p className={styles.date}>{`${year}년 ${month}월 ${day}일`}</p>
       </div>
-      <PostModal />
     </article>
   );
 };

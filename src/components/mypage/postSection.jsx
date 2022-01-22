@@ -3,7 +3,7 @@ import { getMyPosts } from "../../util/fetcher";
 import PostCard from "./postCard";
 import styles from "./postSection.module.css";
 
-const PostSection = ({ token, accountname }) => {
+const PostSection = ({ token, accountname, handleModal }) => {
   const [posts, setPosts] = useState();
   useEffect(() => {
     getMyPosts(accountname, token)
@@ -31,7 +31,13 @@ const PostSection = ({ token, accountname }) => {
         {posts ? (
           <>
             {posts.map((post, idx) => {
-              return <PostCard key={`post-key-${idx}`} post={post} />;
+              return (
+                <PostCard
+                  key={`post-key-${idx}`}
+                  post={post}
+                  handleModal={handleModal}
+                />
+              );
             })}
           </>
         ) : (
