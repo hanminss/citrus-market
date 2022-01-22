@@ -1,4 +1,5 @@
 import React from "react";
+import PostModal from "../modules/modal/postModal";
 import styles from "./postCard.module.css";
 
 const PostCard = ({ post }) => {
@@ -53,6 +54,7 @@ const PostCard = ({ post }) => {
         </div>
         <p className={styles.date}>{`${year}년 ${month}월 ${day}일`}</p>
       </div>
+      <PostModal />
     </article>
   );
 };
