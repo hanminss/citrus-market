@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./productHeader.module.css";
 
-const ProductHeader = ({ navigate }) => {
+const ProductHeader = ({ navigate, validPass, handleUpload }) => {
   return (
     <header className={styles.header}>
       <img
@@ -10,9 +10,19 @@ const ProductHeader = ({ navigate }) => {
         alt=""
         onClick={() => navigate(-1)}
       />
-      <button className={styles.btn_upload} type="button" disabled>
-        저장
-      </button>
+      {validPass ? (
+        <button
+          className={`${styles.btn_upload} ${styles.activate}`}
+          type="button"
+          onClick={handleUpload}
+        >
+          저장
+        </button>
+      ) : (
+        <button className={styles.btn_upload} type="button" disabled>
+          저장
+        </button>
+      )}
     </header>
   );
 };

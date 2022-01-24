@@ -152,3 +152,11 @@ export const putProfile = async (body, token) => {
   const result = await axios(createPutConfigWithToken(`/user`, body, token));
   return result;
 };
+
+export const addProduct = async (body, token) => {
+  const result = await axios(
+    createPostConfigWithToken("/product", body, token)
+  );
+
+  return result;
+};
