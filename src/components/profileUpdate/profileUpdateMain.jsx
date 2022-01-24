@@ -1,12 +1,43 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import { checkIdDuplication } from "../../util/fetcher";
 import styles from "./profileUpdateMain.module.css";
-const ProfileUpdateMain = ({
-  userInfo,
-  userNameRef,
-  accountNameRef,
-  introRef,
-  imgRef,
-}) => {
+const ProfileUpdateMain = ({ userInfo }) => {
+  const userNameRef = useRef();
+  const accountNameRef = useRef();
+  const introRef = useRef();
+  const imgRef = useRef();
+
+  const [accountFlag, setAccountFlag] = useState(false);
+
+  const [accountDuplication, setAccountDuplication] = useState(null);
+  const [accountFormat, setAccountFormat] = useState(null);
+
+  const checkAccountName = () => {
+    if (userInfo.accountname === accountNameRef.current.value)
+      setAccountDuplication(true);
+    else {
+      checkIdDuplication(accountNameRef.current.value) //
+        .then((res) => {
+          setAccountDuplication(res);
+        });
+    }
+  };
+
+  const checkAccountFormat = () => {
+    const regExp = /^[a-zA-Z0-9._]*$/;
+    const accountName = accountNameRef.current.value;
+    if (regExp.test(accountName) && accountName.length) {
+      setAccountFormat(true);
+    } else {
+      setAccountFormat(false);
+    }
+  };
+
+  const handleCheckAccount = () => {
+    checkAccountFormat();
+    checkAccountName();
+  };
+
   return (
     <main className={styles.main}>
       <div className={styles.relative_wrap}>
@@ -57,8 +88,19 @@ const ProfileUpdateMain = ({
           placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
           defaultValue={userInfo.accountname}
           ref={accountNameRef}
+          onBlur={handleCheckAccount}
         />
-        <p className={styles.err_msg}></p>
+        <p className={styles.err_msg}>
+          {accountFormat == null
+            ? ""
+            : !accountFormat
+            ? "*영문, 숫자, 밑줄 및 마침표만 사용할 수 있습니다."
+            : accountDuplication == null
+            ? ""
+            : !accountDuplication
+            ? "*이미 존재하는 아이디 입니다."
+            : ""}
+        </p>
       </div>
 
       <div className={styles.input_wrap}>

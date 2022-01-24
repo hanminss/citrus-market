@@ -9,11 +9,6 @@ const ProfileUpdate = () => {
   const token = getCookie("pic_token");
   const accountname = getCookie("pic_accountname");
 
-  const userNameRef = useRef();
-  const accountNameRef = useRef();
-  const introRef = useRef();
-  const imgRef = useRef();
-
   useEffect(() => {
     getMyInfo(accountname, token) //
       .then((res) => {
@@ -23,17 +18,7 @@ const ProfileUpdate = () => {
   return (
     <>
       <ProfileHeader />
-      {userInfo ? (
-        <ProfileUpdateMain
-          userInfo={userInfo}
-          userNameRef={userNameRef}
-          accountNameRef={accountNameRef}
-          introRef={introRef}
-          imgRef={imgRef}
-        />
-      ) : (
-        "Loading..."
-      )}
+      {userInfo ? <ProfileUpdateMain userInfo={userInfo} /> : "Loading..."}
     </>
   );
 };
