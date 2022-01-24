@@ -1,13 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { API_END_POINT } from "../../constants";
 import { checkIdDuplication } from "../../util/fetcher";
 import styles from "./profileUpdateMain.module.css";
-const ProfileUpdateMain = ({ userInfo }) => {
-  const userNameRef = useRef();
-  const accountNameRef = useRef();
-  const introRef = useRef();
-  const imgRef = useRef();
-
+const ProfileUpdateMain = ({
+  userInfo,
+  setValidPass,
+  userNameRef,
+  accountNameRef,
+  introRef,
+  imgRef,
+}) => {
   const [profileImg, setProfileImg] = useState(
     API_END_POINT + "/" + userInfo.image
   );
@@ -15,6 +17,20 @@ const ProfileUpdateMain = ({ userInfo }) => {
   const [accountFormat, setAccountFormat] = useState(true);
   const [userNameValid, setUserNameValid] = useState(true);
   const [introValid, setIntroValid] = useState(true);
+
+  useEffect(() => {
+    if (accountDuplication && accountFormat && userNameValid && introValid) {
+      setValidPass(true);
+    } else {
+      setValidPass(false);
+    }
+  }, [
+    accountDuplication,
+    accountFormat,
+    userNameValid,
+    introValid,
+    setValidPass,
+  ]);
 
   const handleImgPreView = (event) => {
     if (imgRef.current.files.length) {
