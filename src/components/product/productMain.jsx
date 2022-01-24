@@ -38,7 +38,6 @@ const ProductMain = ({ nameRef, priceRef, linkRef, imgRef, setValidPass }) => {
   };
 
   const changePriceForm = () => {
-    // priceN = priceRef.current.value.replace(/,/g, "") * 1;
     let arr = priceRef.current.value.replace(/,/g, "").split("").reverse();
     let count =
       arr.length % 3 === 0

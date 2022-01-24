@@ -160,3 +160,11 @@ export const addProduct = async (body, token) => {
 
   return result;
 };
+
+export const getProducts = async (accountName, token) => {
+  const result = await axios(
+    createGetConfigWithToken(`/product/${accountName}`, "", token)
+  );
+
+  return result;
+};

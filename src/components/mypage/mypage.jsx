@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
 import { getCookie } from "../../util/cookie";
-import { deletePost, getMyInfo } from "../../util/fetcher";
+import { deletePost, getMyInfo, getProducts } from "../../util/fetcher";
 import ThreeDotHeader from "../modules/header/threeDotHeader";
 import Menu from "../modules/menu/menu";
 import MyPageInfo from "./myPageInfo";
 import styles from "./mypage.module.css";
 import PostSection from "./postSection";
 import PostModal from "../modules/modal/postModal";
+import ProductContainer from "./productContainer";
 
 const Mypage = () => {
-  const accoutName = getCookie("pic_accountname");
+  const accountName = getCookie("pic_accountname");
   const token = getCookie("pic_token");
   const [myInfo, setMyInfo] = useState();
+  const [products, setProducts] = useState();
   const [modal, setModal] = useState(false);
   const [selectedPost, setSelectedPost] = useState("");
 
@@ -40,8 +42,11 @@ const Mypage = () => {
   };
 
   useEffect(() => {
-    getMyInfo(accoutName, token).then((res) => {
+    getMyInfo(accountName, token).then((res) => {
       setMyInfo(res.data.profile);
+    });
+    getProducts(accountName, token).then((res) => {
+      setProducts(res.data);
     });
   }, []);
 
@@ -53,6 +58,15 @@ const Mypage = () => {
         {myInfo ? (
           <>
             <MyPageInfo myInfo={myInfo} />
+            {products ? (
+              products.data ? (
+                <ProductContainer products={products.product} />
+              ) : (
+                ""
+              )
+            ) : (
+              ""
+            )}
             <PostSection
               accountname={myInfo.accountname}
               token={token}
