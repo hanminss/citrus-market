@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { API_END_POINT } from "../../constants";
 import { checkIdDuplication } from "../../util/fetcher";
 import styles from "./profileUpdateMain.module.css";
 const ProfileUpdateMain = ({ userInfo }) => {
@@ -7,10 +8,26 @@ const ProfileUpdateMain = ({ userInfo }) => {
   const introRef = useRef();
   const imgRef = useRef();
 
+  const [profileImg, setProfileImg] = useState(
+    API_END_POINT + "/" + userInfo.image
+  );
   const [accountDuplication, setAccountDuplication] = useState(true);
   const [accountFormat, setAccountFormat] = useState(true);
   const [userNameValid, setUserNameValid] = useState(true);
   const [introValid, setIntroValid] = useState(true);
+
+  const handleImgPreView = (event) => {
+    if (imgRef.current.files.length) {
+      let reader = new FileReader();
+
+      reader.onload = (event) => {
+        setProfileImg(event.target.result);
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    } else {
+      setProfileImg(API_END_POINT + "/" + userInfo.image);
+    }
+  };
 
   const checkAccountName = () => {
     if (userInfo.accountname === accountNameRef.current.value)
@@ -58,7 +75,7 @@ const ProfileUpdateMain = ({ userInfo }) => {
         <div className={styles.border_wrap}>
           <img
             className={styles.img_profile}
-            src={`http://146.56.183.55:5050/${userInfo.image}`}
+            src={`${profileImg}`}
             alt="profile-img"
             accept="image/*"
           />
@@ -77,6 +94,7 @@ const ProfileUpdateMain = ({ userInfo }) => {
           hidden
           accept="image/*"
           ref={imgRef}
+          onChange={handleImgPreView}
         />
       </div>
 
