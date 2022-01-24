@@ -33,6 +33,7 @@ const Mypage = () => {
         if (res.data.message === "삭제되었습니다.") {
           setSelectedPost("");
           setModal(false);
+          document.body.style.overflow = "unset";
         }
       })
       .catch((err) => alert(err));

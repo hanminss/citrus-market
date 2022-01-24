@@ -3,10 +3,17 @@
   height: 44px;
   background-color: #ffffff;
   border-bottom: 0.5px solid #dbdbdb;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.post_nav button {
+  background-color: #fff;
+  border: none;
+  padding: 0;
 }
 
 .post_nav img {
-  float: right;
   width: 26px;
   height: 26px;
   margin: 8px;
@@ -14,4 +21,12 @@
 
 .postList {
   margin-bottom: 94px;
+}
+
+.albumList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px;
+  background-color: #fff;
 }
