@@ -15,6 +15,7 @@ const ProfileUpdate = () => {
         setUserInfo(res.data.profile);
       });
   }, []);
+
   return (
     <>
       <ProfileHeader />

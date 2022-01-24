@@ -7,10 +7,10 @@ const ProfileUpdateMain = ({ userInfo }) => {
   const introRef = useRef();
   const imgRef = useRef();
 
-  const [accountFlag, setAccountFlag] = useState(false);
-
-  const [accountDuplication, setAccountDuplication] = useState(null);
-  const [accountFormat, setAccountFormat] = useState(null);
+  const [accountDuplication, setAccountDuplication] = useState(true);
+  const [accountFormat, setAccountFormat] = useState(true);
+  const [userNameValid, setUserNameValid] = useState(true);
+  const [introValid, setIntroValid] = useState(true);
 
   const checkAccountName = () => {
     if (userInfo.accountname === accountNameRef.current.value)
@@ -36,6 +36,20 @@ const ProfileUpdateMain = ({ userInfo }) => {
   const handleCheckAccount = () => {
     checkAccountFormat();
     checkAccountName();
+  };
+
+  const handleUserName = () => {
+    if (
+      userNameRef.current.value.length > 1 &&
+      userNameRef.current.value.length < 11
+    )
+      setUserNameValid(true);
+    else setUserNameValid(false);
+  };
+
+  const handleIntro = () => {
+    if (introRef.current.value.length === 0) setIntroValid(false);
+    else setIntroValid(true);
   };
 
   return (
@@ -75,8 +89,15 @@ const ProfileUpdateMain = ({ userInfo }) => {
           placeholder="2~10자 이내여야 합니다."
           defaultValue={userInfo.username}
           ref={userNameRef}
+          onBlur={handleUserName}
         />
-        <p className={styles.err_msg}></p>
+        <p className={styles.err_msg}>
+          {userNameValid == null
+            ? ""
+            : !userNameValid
+            ? "*사용자 이름은 2~10자 이내여야 합니다."
+            : ""}
+        </p>
       </div>
 
       <div className={styles.input_wrap}>
@@ -112,8 +133,15 @@ const ProfileUpdateMain = ({ userInfo }) => {
           placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
           defaultValue={userInfo.intro}
           ref={introRef}
+          onBlur={handleIntro}
         />
-        <p className={styles.err_msg}></p>
+        <p className={styles.err_msg}>
+          {introValid == null
+            ? ""
+            : !introValid
+            ? "*소개를 입력해 주세요."
+            : ""}
+        </p>
       </div>
     </main>
   );
