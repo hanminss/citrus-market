@@ -1,0 +1,30 @@
+.imgWrap {
+  position: relative;
+  width: 140px;
+  height: 90px;
+  border-radius: 8px;
+  border: 0.5px solid #bdbdbd;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.imgWrap img {
+  position: absolute;
+  width: 200px;
+  left: -20%;
+  top: -20%;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  margin-bottom: 4px;
+}
+
+.price {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  color: #f26e22;
+}

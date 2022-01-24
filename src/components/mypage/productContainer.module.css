@@ -10,3 +10,11 @@
   line-height: 20px;
   margin-bottom: 16px;
 }
+
+.productWrap {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  overflow-x: scroll;
+  padding-bottom: 7px;
+}
