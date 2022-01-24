@@ -37,7 +37,11 @@ const MyPageInfo = ({ myInfo }) => {
         >
           프로필 수정
         </button>
-        <button type="button" className="follow-btn">
+        <button
+          type="button"
+          className="follow-btn"
+          onClick={() => navigate("product")}
+        >
           상품 등록
         </button>
       </div>
