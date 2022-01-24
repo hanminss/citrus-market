@@ -11,6 +11,7 @@ import Splash from "./components/splash/splash";
 import Upload from "./components/upload/upload";
 import Mypage from "./components/mypage/mypage";
 import { getCookie } from "./util/cookie";
+import ProfileUpdate from "./components/profileUpdate/profileUpdate";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -35,6 +36,8 @@ const App = () => {
           <Route path="/chat/*" element={<Chat />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/mypage" element={<Mypage />} />
+          <Route path="/mypage/profile" element={<ProfileUpdate />} />
+          <Route path="/mypage/product" element={<Mypage />} />
           <Route path="/search" element={<div>search</div>} />
           <Route path="*" element={<div>404</div>} />
         </Routes>

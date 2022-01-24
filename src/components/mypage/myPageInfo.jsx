@@ -1,7 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./myPageInfo.module.css";
 
 const MyPageInfo = ({ myInfo }) => {
+  const navigate = useNavigate();
   return (
     <section className={styles.prfileSection}>
       <div className={styles.profile_wrap}>
@@ -28,7 +30,11 @@ const MyPageInfo = ({ myInfo }) => {
         <p className={styles.profile_info}>{myInfo.intro}</p>
       </div>
       <div className={styles.profile_link}>
-        <button type="button" className="follow-btn">
+        <button
+          type="button"
+          className="follow-btn"
+          onClick={() => navigate("profile")}
+        >
           프로필 수정
         </button>
         <button type="button" className="follow-btn">
