@@ -7,16 +7,19 @@
 }
 
 .img_wrap {
-  display: flex;
-  justify-content: center;
-  border: 1px silid #bdbdbd;
+  position: relative;
+  width: 42px;
+  height: 42px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 0.5px solid #dbdbdb;
 }
 
 .profileImg {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  top: -70px;
+  position: absolute;
+  width: 84px;
+  left: -50%;
+  top: -10%;
 }
 
 .flex_wrap {
@@ -24,6 +27,7 @@
   justify-content: space-between;
   align-items: flex-start;
 }
+
 .flex_wrap button {
   background-color: #fff;
   border: none;

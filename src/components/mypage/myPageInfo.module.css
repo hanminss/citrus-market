@@ -23,15 +23,19 @@
 }
 
 .profile_img {
-  display: flex;
-  justify-content: center;
+  position: relative;
+  width: 110px;
+  height: 110px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px solid #dbdbdb;
 }
 
 .profile_img img {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  top: -70px;
+  position: absolute;
+  width: 220px;
+  left: -50%;
+  top: -10%;
 }
 
 .profile_container {
