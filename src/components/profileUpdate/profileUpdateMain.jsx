@@ -1,6 +1,12 @@
 import React from "react";
 import styles from "./profileUpdateMain.module.css";
-const ProfileUpdateMain = ({ userInfo }) => {
+const ProfileUpdateMain = ({
+  userInfo,
+  userNameRef,
+  accountNameRef,
+  introRef,
+  imgRef,
+}) => {
   return (
     <main className={styles.main}>
       <div className={styles.relative_wrap}>
@@ -20,7 +26,13 @@ const ProfileUpdateMain = ({ userInfo }) => {
             alt="profile-img"
           />
         </label>
-        <input type="file" id="img_profile" hidden accept="image/*" />
+        <input
+          type="file"
+          id="img_profile"
+          hidden
+          accept="image/*"
+          ref={imgRef}
+        />
       </div>
 
       <div className={styles.input_wrap}>
@@ -30,6 +42,8 @@ const ProfileUpdateMain = ({ userInfo }) => {
           id="userName"
           name="userName"
           placeholder="2~10자 이내여야 합니다."
+          defaultValue={userInfo.username}
+          ref={userNameRef}
         />
         <p className={styles.err_msg}></p>
       </div>
@@ -41,6 +55,8 @@ const ProfileUpdateMain = ({ userInfo }) => {
           id="userID"
           name="userID"
           placeholder="영문, 숫자, 특수문자(.),(_)만 사용 가능합니다."
+          defaultValue={userInfo.accountname}
+          ref={accountNameRef}
         />
         <p className={styles.err_msg}></p>
       </div>
@@ -52,7 +68,8 @@ const ProfileUpdateMain = ({ userInfo }) => {
           id="userDesc"
           name="userDesc"
           placeholder="자신과 판매할 상품에 대해 소개해 주세요!"
-          accept="image/*"
+          defaultValue={userInfo.intro}
+          ref={introRef}
         />
         <p className={styles.err_msg}></p>
       </div>
