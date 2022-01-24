@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CheckModal from "./checkModal";
 import styles from "./postModal.module.css";
-const PostModal = ({ handleModal }) => {
+const PostModal = ({ handleModal, postDelete }) => {
   const [checkModal, setCheckModal] = useState(false);
 
   const handleCheckModal = () => {
@@ -19,7 +19,14 @@ const PostModal = ({ handleModal }) => {
             삭제
           </button>
         </div>
-        {checkModal ? <CheckModal handleCheckModal={handleCheckModal} /> : ""}
+        {checkModal ? (
+          <CheckModal
+            handleCheckModal={handleCheckModal}
+            postDelete={postDelete}
+          />
+        ) : (
+          ""
+        )}
       </section>
     </>
   );

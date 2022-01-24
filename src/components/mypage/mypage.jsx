@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react/cjs/react.development";
 import { getCookie } from "../../util/cookie";
-import { getMyInfo } from "../../util/fetcher";
+import { deletePost, getMyInfo } from "../../util/fetcher";
 import ThreeDotHeader from "../modules/header/threeDotHeader";
 import Menu from "../modules/menu/menu";
 import MyPageInfo from "./myPageInfo";
@@ -27,6 +27,17 @@ const Mypage = () => {
     setSelectedPost(id);
   };
 
+  const postDelete = () => {
+    deletePost(selectedPost, token)
+      .then((res) => {
+        if (res.data.message === "삭제되었습니다.") {
+          setSelectedPost("");
+          setModal(false);
+        }
+      })
+      .catch((err) => alert(err));
+  };
+
   useEffect(() => {
     getMyInfo(accoutName, token).then((res) => {
       setMyInfo(res.data.profile);
@@ -45,13 +56,18 @@ const Mypage = () => {
               accountname={myInfo.accountname}
               token={token}
               handleModal={handleModal}
+              selectedPost={selectedPost}
             />
           </>
         ) : (
           <p>Loading....</p>
         )}
       </main>
-      {modal ? <PostModal handleModal={handleModal} /> : ""}
+      {modal ? (
+        <PostModal handleModal={handleModal} postDelete={postDelete} />
+      ) : (
+        ""
+      )}
     </>
   );
 };

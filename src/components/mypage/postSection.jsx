@@ -3,7 +3,7 @@ import { getMyPosts } from "../../util/fetcher";
 import PostCard from "./postCard";
 import styles from "./postSection.module.css";
 
-const PostSection = ({ token, accountname, handleModal }) => {
+const PostSection = ({ token, accountname, handleModal, selectedPost }) => {
   const [posts, setPosts] = useState();
   useEffect(() => {
     getMyPosts(accountname, token)
@@ -13,7 +13,7 @@ const PostSection = ({ token, accountname, handleModal }) => {
       .catch((err) => {
         alert("err: ", err);
       });
-  }, []);
+  }, [selectedPost]);
   return (
     <section>
       <nav className={styles.post_nav}>

@@ -38,6 +38,10 @@
   cursor: pointer;
 }
 
+.checkModal button {
+  background-color: #fff;
+}
+
 .checkModal button:first-child {
   border-top: 0.5px solid #bdbdbd;
   border-right: 0.5px solid #bdbdbd;

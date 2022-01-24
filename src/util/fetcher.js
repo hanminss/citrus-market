@@ -44,6 +44,17 @@ const createGetConfigWithToken = (url, data, token) => {
   };
 };
 
+const createDeleteConfigWithToken = (url, token) => {
+  return {
+    method: "delete",
+    url: API_END_POINT + url,
+    headers: {
+      Authorization: "Bearer " + token,
+      "Content-Type": "application/json",
+    },
+  };
+};
+
 export const checkEmail = async (url, email) => {
   const data = {
     user: {
@@ -113,5 +124,10 @@ export const getMyPosts = async (accountName, token) => {
   const result = await axios(
     createGetConfigWithToken(`/post/${accountName}/userpost`, false, token)
   );
+  return result;
+};
+
+export const deletePost = async (id, token) => {
+  const result = await axios(createDeleteConfigWithToken(`/post/${id}`, token));
   return result;
 };
