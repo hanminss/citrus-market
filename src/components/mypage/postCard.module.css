@@ -110,3 +110,8 @@
   font-weight: 400;
   line-height: 12px;
 }
+
+.block_a {
+  display: inline-block;
+  height: 20px;
+}

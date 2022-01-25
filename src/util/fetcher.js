@@ -51,7 +51,18 @@ const createGetConfigWithToken = (url, data, token) => {
       Authorization: "Bearer " + token,
       "Content-Type": "application/json",
     },
-    data: data ? data : "",
+    data: data,
+  };
+};
+
+const createGetConfigWithTokenNoneData = (url, token) => {
+  return {
+    method: "get",
+    url: API_END_POINT + url,
+    headers: {
+      Authorization: "Bearer " + token,
+      "Content-Type": "application/json",
+    },
   };
 };
 
@@ -142,14 +153,14 @@ export const postUpload = async (body, token) => {
 
 export const getMyInfo = async (accountName, token) => {
   const result = await axios(
-    createGetConfigWithToken(`/profile/${accountName}`, false, token)
+    createGetConfigWithTokenNoneData(`/profile/${accountName}`, token)
   );
   return result;
 };
 
 export const getMyPosts = async (accountName, token) => {
   const result = await axios(
-    createGetConfigWithToken(`/post/${accountName}/userpost`, false, token)
+    createGetConfigWithTokenNoneData(`/post/${accountName}/userpost`, token)
   );
   return result;
 };
@@ -174,7 +185,7 @@ export const addProduct = async (body, token) => {
 
 export const getProducts = async (accountName, token) => {
   const result = await axios(
-    createGetConfigWithToken(`/product/${accountName}`, "", token)
+    createGetConfigWithTokenNoneData(`/product/${accountName}`, token)
   );
 
   return result;
@@ -190,6 +201,13 @@ export const heartPost = async (postID, token) => {
 export const unHeartPost = async (postID, token) => {
   const result = await axios(
     createDeleteConfigWithToken(`/post/${postID}/unheart`, token)
+  );
+  return result;
+};
+
+export const getPostDetail = async (postID, token) => {
+  const result = await axios(
+    createGetConfigWithTokenNoneData(`/post/${postID}`, token)
   );
   return result;
 };

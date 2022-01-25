@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { API_END_POINT } from "../../constants";
 import { heartPost, unHeartPost } from "../../util/fetcher";
 import styles from "./postCard.module.css";
@@ -82,7 +83,9 @@ const PostCard = ({ post, handleModal, token }) => {
             onClick={handleHart}
           />
           <span>{heartCount}</span>
-          <img src="/images/mypage/icon-message-circle.png" alt="" />
+          <Link className={styles.block_a} to={`/post/${post.id}`}>
+            <img src="/images/mypage/icon-message-circle.png" alt="" />
+          </Link>
           <span>{post.commentCount}</span>
         </div>
         <p className={styles.date}>{`${year}년 ${month}월 ${day}일`}</p>
