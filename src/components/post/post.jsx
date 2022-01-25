@@ -5,10 +5,13 @@ import { getPostDetail } from "../../util/fetcher";
 import ThreeDotHeader from "../modules/header/threeDotHeader";
 import PostCard from "../mypage/postCard";
 import Splash from "../splash/splash";
+import CommentInputBox from "./commentInputBox";
+import CommentSection from "./commentSection";
 
 const Post = () => {
   const { postID } = useParams();
   const token = getCookie("pic_token");
+  const myImg = getCookie("pic_profile");
   const [postData, setPostData] = useState();
   const [errFlag, setErrFlag] = useState(true);
 
@@ -26,11 +29,15 @@ const Post = () => {
   return (
     <>
       <ThreeDotHeader />
-      <PostCard
-        post={postData}
-        handleModal={() => console.log("wait")}
-        token={token}
-      />
+      <main>
+        <PostCard
+          post={postData}
+          handleModal={() => console.log("wait")}
+          token={token}
+        />
+        <CommentSection myImg={myImg} />
+        <CommentInputBox myImg={myImg} />
+      </main>
     </>
   );
 };

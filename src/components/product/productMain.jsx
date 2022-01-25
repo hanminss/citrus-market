@@ -76,7 +76,7 @@ const ProductMain = ({ nameRef, priceRef, linkRef, imgRef, setValidPass }) => {
           alt="product-img"
           accept="image/*"
         />
-        <label htmlFor="product_img">
+        <label className={styles.label} htmlFor="product_img">
           <img
             className={styles.img_upload_btn}
             src="/images/product/img-button.png"
@@ -84,6 +84,7 @@ const ProductMain = ({ nameRef, priceRef, linkRef, imgRef, setValidPass }) => {
           />
         </label>
         <input
+          className={styles.input}
           type="file"
           id="product_img"
           hidden
@@ -93,8 +94,11 @@ const ProductMain = ({ nameRef, priceRef, linkRef, imgRef, setValidPass }) => {
         />
       </div>
       <div className={styles.input_wrap}>
-        <label htmlFor="itemName">상품명</label>
+        <label className={styles.label} htmlFor="itemName">
+          상품명
+        </label>
         <input
+          className={styles.input}
           type="text"
           id="itemName"
           name="itemName"
@@ -111,8 +115,11 @@ const ProductMain = ({ nameRef, priceRef, linkRef, imgRef, setValidPass }) => {
         </p>
       </div>
       <div className={styles.input_wrap}>
-        <label htmlFor="price">가격</label>
+        <label className={styles.label} htmlFor="price">
+          가격
+        </label>
         <input
+          className={styles.input}
           type="text"
           id="price"
           name="price"
@@ -123,8 +130,11 @@ const ProductMain = ({ nameRef, priceRef, linkRef, imgRef, setValidPass }) => {
         />
       </div>
       <div className={styles.input_wrap}>
-        <label htmlFor="link">판매 링크</label>
+        <label className={styles.label} htmlFor="link">
+          판매 링크
+        </label>
         <input
+          className={styles.input}
           type="text"
           id="link"
           name="link"

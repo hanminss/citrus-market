@@ -42,14 +42,14 @@
   margin-bottom: 16px;
 }
 
-label {
+.label {
   font-size: 12px;
   font-weight: 500;
   line-height: 15px;
   color: #767676;
 }
 
-input {
+.input {
   border: none;
   width: 100%;
   border-bottom: 1px solid #dbdbdb;
@@ -57,12 +57,12 @@ input {
   font-size: 14px;
 }
 
-input:focus {
+.input:focus {
   outline: none;
   border-bottom: 1px solid #f26e22;
 }
 
-input::placeholder {
+.input::placeholder {
   color: #dbdbdb;
   line-height: 14px;
 }

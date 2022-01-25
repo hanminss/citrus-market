@@ -97,7 +97,7 @@ const ProfileUpdateMain = ({
           />
         </div>
 
-        <label htmlFor="img_profile">
+        <label className={styles.label} htmlFor="img_profile">
           <img
             className={styles.img_upload_btn}
             src="/images/publicImg/upload-file.png"
@@ -105,6 +105,7 @@ const ProfileUpdateMain = ({
           />
         </label>
         <input
+          className={styles.input}
           type="file"
           id="img_profile"
           hidden
@@ -115,8 +116,11 @@ const ProfileUpdateMain = ({
       </div>
 
       <div className={styles.input_wrap}>
-        <label htmlFor="userName">사용자 이름</label>
+        <label className={styles.label} htmlFor="userName">
+          사용자 이름
+        </label>
         <input
+          className={styles.input}
           type="text"
           id="userName"
           name="userName"
@@ -135,8 +139,11 @@ const ProfileUpdateMain = ({
       </div>
 
       <div className={styles.input_wrap}>
-        <label htmlFor="userID">계정 ID</label>
+        <label className={styles.label} htmlFor="userID">
+          계정 ID
+        </label>
         <input
+          className={styles.input}
           type="text"
           id="userID"
           name="userID"
@@ -159,8 +166,11 @@ const ProfileUpdateMain = ({
       </div>
 
       <div className={styles.input_wrap}>
-        <label htmlFor="userDesc">소개</label>
+        <label className={styles.label} htmlFor="userDesc">
+          소개
+        </label>
         <input
+          className={styles.input}
           type="text"
           id="userDesc"
           name="userDesc"
