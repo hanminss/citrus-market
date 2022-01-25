@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getCookie } from "../../util/cookie";
-import { getPostDetail } from "../../util/fetcher";
+import { getComments, getPostDetail } from "../../util/fetcher";
 import ThreeDotHeader from "../modules/header/threeDotHeader";
 import PostCard from "../mypage/postCard";
 import Splash from "../splash/splash";
@@ -13,6 +13,7 @@ const Post = () => {
   const token = getCookie("pic_token");
   const myImg = getCookie("pic_profile");
   const [postData, setPostData] = useState();
+  const [commentData, setCommentData] = useState();
   const [errFlag, setErrFlag] = useState(true);
 
   useEffect(() => {
@@ -23,8 +24,17 @@ const Post = () => {
       .catch(() => setErrFlag(false));
   }, [postID, token]);
 
+  useEffect(() => {
+    getComments(postID, token) //
+      .then((res) => {
+        setCommentData(res.data.comments);
+        console.log(res);
+      })
+      .catch(() => setErrFlag(false));
+  }, [postID, token]);
+
   if (!errFlag) return <div>404</div>;
-  if (!postData) return <Splash />;
+  if (!postData || !commentData) return <Splash />;
 
   return (
     <>
