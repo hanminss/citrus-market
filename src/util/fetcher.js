@@ -211,3 +211,10 @@ export const getPostDetail = async (postID, token) => {
   );
   return result;
 };
+
+export const uploadComment = async (postID, token, body) => {
+  const result = await axios(
+    createPostConfigWithToken(`/post/${postID}/comments`, body, token)
+  );
+  return result;
+};

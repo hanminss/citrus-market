@@ -36,7 +36,7 @@ const Post = () => {
           token={token}
         />
         <CommentSection myImg={myImg} />
-        <CommentInputBox myImg={myImg} />
+        <CommentInputBox myImg={myImg} postID={postID} token={token} />
       </main>
     </>
   );
