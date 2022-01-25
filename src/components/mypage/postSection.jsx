@@ -44,6 +44,7 @@ const PostSection = ({ token, accountname, handleModal, selectedPost }) => {
                   key={`post-key-${idx}`}
                   post={post}
                   handleModal={handleModal}
+                  token={token}
                 />
               );
             })}

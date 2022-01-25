@@ -25,7 +25,7 @@ const App = () => {
     setTimeout(() => {
       setSplash(true);
     }, 1000);
-  }, []);
+  }, [isLogin]);
 
   if (!splash) return <Splash />;
 

@@ -32,6 +32,17 @@ const createPostConfigWithToken = (url, data, token) => {
   };
 };
 
+const createPostConfigWithTokenNoneData = (url, token) => {
+  return {
+    method: "post",
+    url: API_END_POINT + url,
+    headers: {
+      Authorization: "Bearer " + token,
+      "Content-Type": "application/json",
+    },
+  };
+};
+
 const createGetConfigWithToken = (url, data, token) => {
   return {
     method: "get",
@@ -166,5 +177,19 @@ export const getProducts = async (accountName, token) => {
     createGetConfigWithToken(`/product/${accountName}`, "", token)
   );
 
+  return result;
+};
+
+export const heartPost = async (postID, token) => {
+  const result = await axios(
+    createPostConfigWithTokenNoneData(`/post/${postID}/heart`, token)
+  );
+  return result;
+};
+
+export const unHeartPost = async (postID, token) => {
+  const result = await axios(
+    createDeleteConfigWithToken(`/post/${postID}/unheart`, token)
+  );
   return result;
 };
