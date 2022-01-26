@@ -9,6 +9,7 @@ const CommentInputBox = ({
   token,
   setCommentData,
   setErrFlag,
+  hendleGetComments,
 }) => {
   const [valid, setValid] = useState(false);
   const contentRef = useRef();
@@ -33,16 +34,9 @@ const CommentInputBox = ({
       })
       .catch(() => alert("server err"));
 
-    refreshComment();
+    hendleGetComments();
   };
 
-  const refreshComment = () => {
-    getComments(postID, token) //
-      .then((res) => {
-        setCommentData(res.data.comments);
-      })
-      .catch(() => setErrFlag(false));
-  };
   return (
     <section className={styles.commentInputBox}>
       <div className={styles.img_wrap}>

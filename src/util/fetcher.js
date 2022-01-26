@@ -225,3 +225,10 @@ export const getComments = async (postID, token) => {
   );
   return result;
 };
+
+export const deleteComment = async (postID, commentID, token) => {
+  const result = await axios(
+    createDeleteConfigWithToken(`/post/${postID}/comments/${commentID}`, token)
+  );
+  return result;
+};

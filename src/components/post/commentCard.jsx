@@ -3,7 +3,13 @@ import styles from "./commentCard.module.css";
 import { API_END_POINT } from "../../constants";
 import CommentModal from "../modules/modal/commentModal";
 
-const CommentCard = ({ comment, accountName }) => {
+const CommentCard = ({
+  comment,
+  accountName,
+  postID,
+  token,
+  hendleGetComments,
+}) => {
   const [modal, setModal] = useState(false);
   const getElapsedTime = () => {
     const created = new Date(comment.createdAt);
@@ -59,6 +65,9 @@ const CommentCard = ({ comment, accountName }) => {
           setModal={setModal}
           own={ownComment()}
           commentID={comment.id}
+          postID={postID}
+          token={token}
+          hendleGetComments={hendleGetComments}
         />
       ) : (
         ""

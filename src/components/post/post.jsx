@@ -16,6 +16,14 @@ const Post = () => {
   const [commentData, setCommentData] = useState();
   const [errFlag, setErrFlag] = useState(true);
 
+  const hendleGetComments = () => {
+    getComments(postID, token) //
+      .then((res) => {
+        setCommentData(res.data.comments);
+      })
+      .catch(() => setErrFlag(false));
+  };
+
   useEffect(() => {
     getPostDetail(postID, token) //
       .then((res) => {
@@ -25,12 +33,8 @@ const Post = () => {
   }, [postID, token]);
 
   useEffect(() => {
-    getComments(postID, token) //
-      .then((res) => {
-        setCommentData(res.data.comments);
-      })
-      .catch(() => setErrFlag(false));
-  }, [postID, token]);
+    hendleGetComments();
+  }, []);
 
   if (!errFlag) return <div>404</div>;
   if (!postData || !commentData) return <Splash />;
@@ -44,13 +48,19 @@ const Post = () => {
           handleModal={() => console.log("wait")}
           token={token}
         />
-        <CommentSection commentData={commentData} />
+        <CommentSection
+          commentData={commentData}
+          postID={postID}
+          token={token}
+          hendleGetComments={hendleGetComments}
+        />
         <CommentInputBox
           myImg={myImg}
           postID={postID}
           token={token}
           setCommentData={setCommentData}
           setErrFlag={setErrFlag}
+          hendleGetComments={hendleGetComments}
         />
       </main>
     </>

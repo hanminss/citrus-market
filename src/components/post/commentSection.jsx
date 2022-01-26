@@ -3,7 +3,7 @@ import { getCookie } from "../../util/cookie";
 import CommentCard from "./commentCard";
 import styles from "./commentSection.module.css";
 
-const CommentSection = ({ commentData }) => {
+const CommentSection = ({ commentData, postID, token, hendleGetComments }) => {
   const accountName = getCookie("pic_accountname");
   return (
     <section className={styles.commentSection}>
@@ -13,6 +13,9 @@ const CommentSection = ({ commentData }) => {
             key={`key-comment-${idx}`}
             comment={item}
             accountName={accountName}
+            postID={postID}
+            token={token}
+            hendleGetComments={hendleGetComments}
           />
         );
       })}
