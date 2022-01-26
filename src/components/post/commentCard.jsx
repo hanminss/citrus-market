@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./commentCard.module.css";
 import { API_END_POINT } from "../../constants";
+import CommentModal from "../modules/modal/commentModal";
 
-const CommentCard = ({ comment }) => {
+const CommentCard = ({ comment, accountName }) => {
+  const [modal, setModal] = useState(false);
   const getElapsedTime = () => {
     const created = new Date(comment.createdAt);
     const now = new Date();
     const MINUTE = 1000 * 60;
-    const HOUR = 1000 * 60 * 60;
+    const HOUR = MINUTE * 60;
     const DAY = HOUR * 24;
     const ElapsedTime = now - created;
     const monthFormat =
@@ -25,6 +27,12 @@ const CommentCard = ({ comment }) => {
       return `${created.getFullYear()}-${monthFormat}-${created.getDate()}`;
     }
   };
+
+  const ownComment = () => {
+    if (accountName === comment.author.accountname) return true;
+    else return false;
+  };
+
   return (
     <article className={styles.commentArticle}>
       <div className={styles.imgWrap}>
@@ -40,12 +48,21 @@ const CommentCard = ({ comment }) => {
             <h2 className={styles.userName}>{comment.author.username}</h2>
             <p className={styles.elapsedTime}>{getElapsedTime()}</p>
           </div>
-          <button className={styles.moreBtn}>
+          <button className={styles.moreBtn} onClick={() => setModal(true)}>
             <img src="/images/publicImg/s-icon-more-vertical.png" alt="" />
           </button>
         </div>
         <p className={styles.content}>{comment.content}</p>
       </div>
+      {modal ? (
+        <CommentModal
+          setModal={setModal}
+          own={ownComment()}
+          commentID={comment.id}
+        />
+      ) : (
+        ""
+      )}
     </article>
   );
 };
