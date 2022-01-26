@@ -232,3 +232,13 @@ export const deleteComment = async (postID, commentID, token) => {
   );
   return result;
 };
+
+export const reportComment = async (postID, commentID, token) => {
+  const result = await axios(
+    createPostConfigWithTokenNoneData(
+      `/post/${postID}/comments/${commentID}/report`,
+      token
+    )
+  );
+  return result;
+};

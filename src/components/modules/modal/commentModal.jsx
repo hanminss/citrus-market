@@ -1,5 +1,5 @@
 import React from "react";
-import { deleteComment } from "../../../util/fetcher";
+import { deleteComment, reportComment } from "../../../util/fetcher";
 import styles from "./commentModal.module.css";
 
 const CommentModal = ({
@@ -16,7 +16,17 @@ const CommentModal = ({
         alert(res.data.message);
         hendleGetComments();
         setModal(false);
-      });
+      })
+      .catch(() => alert("server err"));
+  };
+
+  const handleReportComment = () => {
+    reportComment(postID, commentID, token) //
+      .then((res) => {
+        alert("신고가 완료되었습니다.");
+        setModal(false);
+      })
+      .catch(() => alert("server err"));
   };
   return (
     <section className={styles.model_wrap}>
@@ -28,7 +38,9 @@ const CommentModal = ({
             삭제
           </button>
         ) : (
-          <button className={styles.modalBtn}>신고하기</button>
+          <button className={styles.modalBtn} onClick={handleReportComment}>
+            신고하기
+          </button>
         )}
       </div>
     </section>
