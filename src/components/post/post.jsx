@@ -28,7 +28,7 @@ const Post = () => {
     getComments(postID, token) //
       .then((res) => {
         setCommentData(res.data.comments);
-        console.log(res);
+        console.log(res.data.comments);
       })
       .catch(() => setErrFlag(false));
   }, [postID, token]);
@@ -45,7 +45,7 @@ const Post = () => {
           handleModal={() => console.log("wait")}
           token={token}
         />
-        <CommentSection myImg={myImg} />
+        <CommentSection commentData={commentData} />
         <CommentInputBox myImg={myImg} postID={postID} token={token} />
       </main>
     </>
