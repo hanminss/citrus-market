@@ -28,7 +28,6 @@ const Post = () => {
     getComments(postID, token) //
       .then((res) => {
         setCommentData(res.data.comments);
-        console.log(res.data.comments);
       })
       .catch(() => setErrFlag(false));
   }, [postID, token]);
@@ -46,7 +45,13 @@ const Post = () => {
           token={token}
         />
         <CommentSection commentData={commentData} />
-        <CommentInputBox myImg={myImg} postID={postID} token={token} />
+        <CommentInputBox
+          myImg={myImg}
+          postID={postID}
+          token={token}
+          setCommentData={setCommentData}
+          setErrFlag={setErrFlag}
+        />
       </main>
     </>
   );
