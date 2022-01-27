@@ -1,0 +1,53 @@
+.outer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.checkModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 10px;
+  width: 252px;
+  height: 110px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.modal_msg {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 22px 0;
+
+  background-color: #fff;
+}
+
+.checkModal button {
+  width: 50%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  padding: 14px 0;
+  border: none;
+  cursor: pointer;
+}
+
+.checkModal button {
+  background-color: #fff;
+}
+
+.checkModal button:first-child {
+  border-top: 0.5px solid #bdbdbd;
+  border-right: 0.5px solid #bdbdbd;
+}
+
+.checkModal button:last-child {
+  border-top: 0.5px solid #bdbdbd;
+  color: #f26e22;
+}
