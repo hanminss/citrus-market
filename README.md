@@ -1,70 +1,144 @@
-# Getting Started with Create React App
+### 필수 과제
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+디자인(피그마)를 참고하여 모든 페이지의 UI 구현해야 합니다. 프론트엔드 스쿨인 점을 고려하여 팀에서 백엔드 파트를 맡게 되더라도 한 명당 한 페이지의 작업은 필수입니다.
 
-## Available Scripts
+게시글 CRUD와 회원가입, 로그인 기능은 필수 과제입니다.
 
-In the project directory, you can run:
+**1.1 splash**
 
-### `yarn start`
+- 서비스 접속 초기화면입니다.
+- splash 화면이 잠시 나온 뒤 다음 페이지가 나타납니다.
+    - 로그인을 하지 않은 경우 : 로그인 화면
+    - 로그인이 되어 있는 경우 : 감귤마켓 피드
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**1.2 로그인**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 로그인은 **로그인 메인 화면**과 **이메일 로그인 화면**으로 나눠져 있습니다.
+- SNS(카카오톡, 구글, 페이스북) 로그인은 구현하지 않으며, 화면에 버튼만 배치하도록 합니다.
+- 로그인 메인 화면에서 `이메일로 로그인` 을 클릭하면 이메일로 로그인할 수 있는 화면으로 이동합니다.
+- 이메일과 비밀번호를 모두 입력하면 `다음` 버튼이 활성화 됩니다. 입력되지 않은 입력창이 있다면 버튼은 활성되지 않습니다.
+- `로그인` 버튼을 클릭하면 이메일 주소와 로그인에 대한 유효성 검사를 진행하며, 이메일 주소 또는 비밀번호가 일치하지 않을 경우에는 경고 문구가 나타납니다.
+- 입력창에 focus 될 경우에는 선의 색이 변합니다.(회색, #DBDBDB → 주황색, #F26E22)
 
-### `yarn test`
+**1.3 회원가입**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 로그인 메인 화면에서 `회원가입` 을 누르거나 이메일 로그인 화면에서 `이메일로 회원가입` 을 누르면 회원가입 화면이 나타납니다.
+- 회원가입 페이지에서는 유효성 검사가 로그인 페이지와 조금 다르게 진행됩니다.
+- 이메일 주소 또는 비밀번호를 입력하고 입력창에서 포커스를 잃으면 바로 유효성 검사가 진행되고 통과하지 못한 경우 경고 문구가 각 입력창 하단에 표시됩니다.
+- 이메일 주소의 형식이 유효하지 않거나 이미 가입된 이메일일 경우,  또는 비밀번호가 6자 미만일 경우에는 각 입력창 하단에 경구 문구가 나타납니다.
+- 입력창에 focus 될 경우에는 선의 색이 변합니다.(회색, #DBDBDB → 주황색, #F26E22)
+- 작성이 완료된 후, 유효성 검사를 통과할 경우 `다음` 버튼이 활성화되며, 버튼을 클릭하면 프로필 설정 폼이 나타납니다.
+- 프로필 설정에 필요한 프로필 사진, 사용자 이름(2~10자 이내), 계정 ID, 소개를 입력받습니다.
+    - 프로필 사진은 등록하지 않을 경우 기본 이미지가 등록되게 합니다.
+    - 사용자 이름과 소개는 다른 사용자와 중복될 수 있습니다.
+    - 계정 ID는 중복이 불가합니다.
+    - 프로필 설정에서도 같은 방식으로 유효성 검사가 진행됩니다. 계정 ID에 대한 중복 유무와 형식을 검사합니다.
 
-### `yarn build`
+**1.4 감귤마켓 피드(홈 화면)**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 감귤마켓 피드는 사용자들이 올린 게시글들이 표시되는 페이지입니다.
+- 감귤마켓 피드에는 자신이 팔로우한 사용자의 게시글만 확인할 수 있습니다.
+- 팔로우한 사용자가 없을 경우와 내가 팔로우한 사용자가 올린 게시글이 없는 경우 "유저를 검색해 팔로우 해보세요!" 문구와 함께 `검색하기` 버튼이 표시됩니다.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**1.5 검색**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 감귤마켓 피드 상단에 돋보기 버튼(검색 버튼)을 클릭하면 표시되는 페이지입니다.
+- 사용자 이름을 검색할 수 있는 페이지입니다.
+- 필수 과제에서는 검색 기능은 구현하지 않습니다. 마크업만 구현해 보세요.
 
-### `yarn eject`
+**1.6 사용자 프로필 페이지**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- 사용자 프로필 페이지에서는 사용자 이름, 계정 ID, 소개, 팔로워 및 팔로잉 수, 판매 상품, 그리고 사용자가 업로드한 게시글을 확인할 수 있습니다.
+- 사용자 정보 하단에는 팔로우 버튼이 있습니다. 팔로우 버튼을 클릭하면 언팔로우 버튼으로 바뀌어야 합니다. 단, 팔로우 기능은 구현하지 않습니다. 버튼의 변화만 구현하세요.
+- 팔로워 및 팔로잉 수를 클릭하면 팔로워, 팔로잉 사용자 목록이 표시됩니다.
+- 판매 중인 상품 섹션은 등록한 상품이 없을 경우에는 표시되지 않습니다.
+- 게시글 섹션에서는 목록형과 앨범형으로 게시글들을 확인할 수 있습니다. 기본형은 목록형이며, 이미지가 없는 게시글을 경우에는 앨범형에서는 표시되지 않습니다.
+- 또한 사용자가 올린 게시글이 없을 경우에는 게시글이 나타나지 않습니다.
+- 나의 프로필 페이지일 경우
+    - 프로필 수정 버튼과 상품 등록 버튼이 표시됩니다.
+    - 판매 중인 상품을 클릭하면 하단에 상품 삭제, 수정, 웹사이트에서 상품 보기 버튼이 포함된 메뉴가 나타납니다. (단, 나의 프로필 페이지가 아닐 경우 상품을 클릭하면 바로 상품 판매 사이트로 이동됩니다.)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**1.7 팔로워, 팔로잉 목록**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- 사용자 프로필 페이지에서 팔로워 및 팔로잉 수를 클릭하면 나타나는 페이지입니다.
+- 목록은 사용자 프로필 사진, 이름, 계정 ID, 팔로우(또는 취소) 버튼으로 구성됩니다.
+- 내가 팔로우 한 사용자일 경우 취소 버튼이, 내가 팔로우 하지 않은 사용자일 경우에는 팔로우 버튼이 표시됩니다. 단, 팔로우 기능은 구현하지 않습니다. 버튼의 변화만 구현하세요.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**1.8 내 프로필 수정**
 
-## Learn More
+- 나의 프로필 페이지에서 `프로필 수정` 버튼을 클릭하면 프로필을 수정할 수 있는 페이지가 나타납니다.
+- 입력창에 대한 명세는 회원가입에서의 프로필 설정과 동일합니다. 유효성 검사가 통과되지 않을 경우 `저장` 버튼이 활성화되지 않습니다.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**1.9 상품 등록**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- 나의 프로필 페이지에서 `상품 등록` 버튼을 클릭하면 상품을 등록할 수 있는 페이지가 나타납니다.
+- 상품 이미지, 상품명, 가격, 판매링크를 입력받을 수 있으며, 모든 입력이 완료되면 `저장` 버튼이 활성화됩니다.
+- 상품명은 2~15자 이내로 입력되게 하고, 가격은 숫자를 입력하면 자동으로 원단위로 변환시킵니다.
 
-### Code Splitting
+**1.10 게시글 댓글 페이지**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- 게시글 하단에 말풍선 아이콘을 클릭하면 댓글을 확인하고 입력할 수 있는 페이지가 나타납니다.
+- 댓글 입력창에 텍스트를 입력하면 `게시` 버튼이 활성화됩니다.
 
-### Analyzing the Bundle Size
+**1.11 게시글 작성 페이지**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- 게시글을 작성할 수 있는 페이지로, 하단 메뉴바에서 `게시글 작성` 을 클릭하면 표시됩니다.
+- 글이 입력되거나 사진이 업로드 되면 `업로드` 버튼이 활성화되고, 버튼을 누르면 게시글이 업로드됩니다.
+- 사진은 우측 하단 버튼을 클릭하면 업로드할 수 있으며, 최대 3장까지 업로드 가능합니다.
 
-### Making a Progressive Web App
+**1.12 채팅 목록**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- 채팅 목록과 채팅방은 마크업 구현 및 스타일 적용만 진행합니다.
+- 현재 대화가 진행 중인 채팅 목록이 표시됩니다.
+- 내가 읽지 않은 메시지가 있는 채팅방인 경우 프로필 사진 좌측 상단에 작은 원으로 표시됩니다.
 
-### Advanced Configuration
+**1.13 채팅방**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- 채팅 목록과 채팅방은 마크업 구현 및 스타일 적용만 진행합니다.
+- 채팅 목록에서 목록 아이템을 클릭하면 해당 채팅방이 나타납니다.
+- 채팅 기능은 구현하지 않습니다.
+- 채팅 입력창에서 텍스트가 입력되면 `전송` 버튼이 활성화됩니다.
+- 이미지 버튼을 클릭하고 이미지를 선택하면 전송 버튼이 활성화됩니다.
+- 채팅방 상단 우측 버튼을 클릭하면 아래와 같은 모달이 화면 하단에 나타납니다.
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**1.14 하단 탭 메뉴**
 
-### `yarn build` fails to minify
+- 하단 탭 메뉴는 홈, 채팅, 게시물 작성, 프로필 4개의 메뉴로 구성되어 있습니다.
+- 모든 페이지는 페이지 경로에 해당하는 탭 메뉴가 활성화됩니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**1.15 좋아요 버튼**
+
+- 게시글이 나타나는 모든 페이지에 해당합니다.
+- 게시글 하단에는 하트 모양에 좋아요 버튼이 있습니다.
+- 빈 하트를 클릭하면 색이 칠해진 하트로 변하고, 색이 칠해진 하트를 누르면 빈 하트로 변합니다.
+- 좋아요 기능은 구현하지 않습니다.
+
+### 선택(도전) 과제
+
+**2.1 팔로우**
+
+- 사용자 정보 하단에는 팔로우 버튼이 있습니다. 내가 팔로우 한 사용자일 경우 언팔로우 버튼이, 내가 팔로우 하지 않은 사용자일 경우에는 팔로우 버튼이 표시됩니다.
+- 팔로우 목록에는 내가 팔로우 한 사용자일 경우 취소 버튼이, 내가 팔로우 하지 않은 사용자일 경우에는 팔로우 버튼이 표시됩니다.
+- 팔로우 버튼을 클릭하면 팔로잉 목록에 해당 사용자가 추가됩니다. 취소 버튼을 클릭하면 팔로잉 목록에서 해당 사용자가 삭제되어야 합니다.
+- 사용자 프로필 페이지에서 팔로워 및 팔로잉 수를 클릭하면 나타나는 페이지입니다.
+- 팔로워 및 팔로잉 목록에 내가 표시될 경우 팔로우 버튼은 나타나지 않습니다.
+
+**2.2 좋아요**
+
+- 게시글이 나타나는 모든 페이지에 해당합니다.
+- 게시글 하단에는 하트 모양에 좋아요 버튼이 있습니다.
+- 빈 하트를 클릭하면 색이 칠해진 하트로 변하고, 색이 칠해진 하트를 누르면 빈 하트로 변합니다.
+- 좋아요 개수는 카운트 되어 하트모양 우측에 표시됩니다.
+
+**2.3 댓글**
+
+- 댓글 삭제 및 신고하기 기능을 구현합니다.
+- 댓글 작성이 현재 시간으로 부터 몇 초, 분, 시간 전에 작성되었는지 표시합니다.
+- 댓글 개수는 카운트 되어 말풍선 아이콘 우측에 표시됩니다.
+
+**2.4 검색**
+
+- 감귤마켓 피드 상단에 돋보기 버튼(검색 버튼)을 클릭하면 표시되는 페이지입니다.
+- 사용자 이름과 계정을 검색할 수 있는 페이지입니다. 입력창에 텍스트를 입력하면 해당하는 사용자가 나오도록 합니다.
+- 검색어와 같은 단어에는 주황색 글씨가 표시됩니다.
