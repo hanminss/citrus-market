@@ -79,7 +79,7 @@ const Login = ({ setIsLogin }) => {
             className={styles.input}
             id="email"
             type="email"
-            onBlur={handleEmaliValid}
+            onInput={handleEmaliValid}
           />
           <p className={styles.err_msg}>{errMsg}</p>
         </div>
@@ -93,7 +93,7 @@ const Login = ({ setIsLogin }) => {
             className={styles.input}
             id="pwd"
             type="password"
-            onBlur={handlePwdValid}
+            onInput={handlePwdValid}
           />
           <p className={styles.err_msg}></p>
         </div>
