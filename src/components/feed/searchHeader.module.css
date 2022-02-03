@@ -1,0 +1,34 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: #ffffff;
+}
+
+.feed_search_container {
+  padding: 7px 19px 8px 19px;
+  border-bottom: 0.5px solid #dbdbdb;
+  display: flex;
+  align-items: center;
+}
+
+.backBtn {
+  width: 22px;
+  height: 22px;
+  margin-right: 20px;
+}
+
+.searchInput {
+  background-color: #f2f2f2;
+  padding: 7px 16px;
+  border-radius: 32px;
+  font-size: 14px;
+  line-height: 18px;
+  border: none;
+  width: 100%;
+}
+
+.searchInput::placeholder {
+  color: #c4c4c4;
+}
