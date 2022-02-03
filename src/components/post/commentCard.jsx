@@ -39,14 +39,18 @@ const CommentCard = ({
     else return false;
   };
 
+  const getImage = () => {
+    if (comment.author.image.indexOf(API_END_POINT) !== -1)
+      return comment.author.image;
+    else if (comment.author.image.length > 50)
+      return `${API_END_POINT}/Ellipse.png`;
+    else return `${API_END_POINT}/${comment.author.image}`;
+  };
+
   return (
     <article className={styles.commentArticle}>
       <div className={styles.imgWrap}>
-        <img
-          className={styles.profileImg}
-          src={`${API_END_POINT}/${comment.author.image}`}
-          alt=""
-        />
+        <img className={styles.profileImg} src={getImage()} alt="" />
       </div>
       <div className={styles.contentsWrap}>
         <div className={styles.titleWrap}>

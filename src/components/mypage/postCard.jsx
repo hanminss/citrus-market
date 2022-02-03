@@ -41,14 +41,18 @@ const PostCard = ({ post, handleModal, token }) => {
     }
   };
 
+  const getImageSrc = () => {
+    if (post.author.image.indexOf(API_END_POINT) !== -1)
+      return post.author.image;
+    else if (post.author.image.length > 50)
+      return `${API_END_POINT}/Ellipse.png`;
+    else return `${API_END_POINT}/${post.author.image}`;
+  };
+
   return (
     <article className={styles.post_card}>
       <div className={styles.img_wrap}>
-        <img
-          className={styles.profileImg}
-          src={`${API_END_POINT}/${post.author.image}`}
-          alt=""
-        />
+        <img className={styles.profileImg} src={getImageSrc()} alt="" />
       </div>
       <div>
         <div className={styles.flex_wrap}>
