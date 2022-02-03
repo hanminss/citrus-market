@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import styles from "./feedHeader.module.css";
 const FeedHeader = ({ setSearch }) => {
   return (

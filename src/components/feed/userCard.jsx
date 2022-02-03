@@ -2,8 +2,7 @@ import React from "react";
 import styles from "./userCard.module.css";
 import { API_END_POINT } from "../../constants";
 
-const UserCard = ({ user, keyword }) => {
-  console.log(user);
+const UserCard = ({ user, keyword = 0 }) => {
   const getImage = () => {
     if (user.image.indexOf(API_END_POINT) !== -1) return user.image;
     else if (user.image.length > 50) return `${API_END_POINT}/Ellipse.png`;
@@ -17,6 +16,7 @@ const UserCard = ({ user, keyword }) => {
     const first = name.slice(0, start);
     const mid = name.slice(start, end);
     const last = name.slice(end);
+
     if (type)
       return (
         <h2 className={styles.userName}>

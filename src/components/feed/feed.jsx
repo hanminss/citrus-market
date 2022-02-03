@@ -19,6 +19,7 @@ const Feed = () => {
   useEffect(() => {
     if (keyWordRef.current === null) {
       keyWordRef.current = "";
+      setUserData([]);
     }
   }, [keyWordRef.current.value]);
 

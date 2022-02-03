@@ -9,7 +9,10 @@ const SearchHeader = ({ setSearch, keyWordRef, getSearchUser }) => {
           className={styles.backBtn}
           src="/images/publicImg/icon-arrow-left.png"
           alt="뒤로가기"
-          onClick={() => setSearch(false)}
+          onClick={() => {
+            keyWordRef.current.value = "";
+            setSearch(false);
+          }}
         />
         <input
           ref={keyWordRef}
