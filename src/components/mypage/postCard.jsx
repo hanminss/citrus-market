@@ -51,9 +51,11 @@ const PostCard = ({ post, handleModal, token }) => {
 
   return (
     <article className={styles.post_card}>
-      <div className={styles.img_wrap}>
-        <img className={styles.profileImg} src={getImageSrc()} alt="" />
-      </div>
+      <Link to={`/otherpage/${post.author.accountname}`}>
+        <div className={styles.img_wrap}>
+          <img className={styles.profileImg} src={getImageSrc()} alt="" />
+        </div>
+      </Link>
       <div>
         <div className={styles.flex_wrap}>
           <div>
