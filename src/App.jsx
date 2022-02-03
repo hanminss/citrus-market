@@ -15,6 +15,7 @@ import ProfileUpdate from "./components/profileUpdate/profileUpdate";
 import Product from "./components/product/product";
 import Post from "./components/post/post";
 import OtherPage from "./components/otherPage/otherPage";
+import NotFound from "./components/404/notFound";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -43,7 +44,7 @@ const App = () => {
           <Route path="/mypage/product" element={<Product />} />
           <Route path="/otherPage/:accountname" element={<OtherPage />} />
           <Route path="/post/:postID" element={<Post />} />
-          <Route path="*" element={<div>404</div>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     );
@@ -54,7 +55,7 @@ const App = () => {
           <Route path="/" element={<NotLogin />} />
           <Route path="/login/*" element={<Login setIsLogin={setIsLogin} />} />
           <Route path="/join/*" element={<Join />} />
-          <Route path="*" element={<div>404</div>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     );
