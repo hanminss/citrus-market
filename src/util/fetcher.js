@@ -252,3 +252,17 @@ export const searchUser = async (keyWord, token) => {
   );
   return result;
 };
+
+export const followUser = async (accountName, token) => {
+  const result = await axios(
+    createPostConfigWithTokenNoneData(`/profile/${accountName}/follow`, token)
+  );
+  return result;
+};
+
+export const unFollowUser = async (accountName, token) => {
+  const result = await axios(
+    createDeleteConfigWithToken(`/profile/${accountName}/unfollow`, token)
+  );
+  return result;
+};

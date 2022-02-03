@@ -70,7 +70,7 @@
   gap: 17px;
 }
 
-.fallow {
+.follow {
   background-color: #f26e22;
   width: 120px;
   color: #fff;
@@ -82,7 +82,7 @@
   border: none;
 }
 
-.unfallow {
+.unfollow {
   background-color: #fff;
   width: 120px;
   border: 1px solid #767676;

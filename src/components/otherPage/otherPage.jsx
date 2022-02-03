@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react/cjs/react.development";
 import { getCookie } from "../../util/cookie";
 import { getMyInfo, getProducts } from "../../util/fetcher";
@@ -14,14 +14,21 @@ import PostModal from "../modules/modal/postModal";
 const OtherPage = () => {
   const { accountname } = useParams();
   const token = getCookie("pic_token");
+  const myAcoountName = getCookie("pic_accountname");
   const [userInfo, setUserInfo] = useState(false);
   const [products, setProducts] = useState(false);
   const [modal, setModal] = useState(false);
   const [selectedPost, setSelectedPost] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     getMyInfo(accountname, token) //
-      .then((res) => setUserInfo(res.data.profile))
+      .then((res) => {
+        if (res.data.profile.accountname === myAcoountName) {
+          navigate("/mypage");
+        }
+        setUserInfo(res.data.profile);
+      })
       .catch((err) => alert(err));
     getProducts(accountname, token) //
       .then((res) => setProducts(res.data.product))
@@ -46,7 +53,11 @@ const OtherPage = () => {
       <ThreeDotHeader />
       <Menu />
       <main className={styles.mypage_main}>
-        <OtherPageInfo userInfo={userInfo} />
+        <OtherPageInfo
+          userInfo={userInfo}
+          accountname={accountname}
+          token={token}
+        />
         {products ? <ProductContainer products={products} /> : <></>}
         <PostSection
           accountname={userInfo.accountname}
@@ -56,7 +67,10 @@ const OtherPage = () => {
         />
       </main>
       {modal ? (
-        <PostModal handleModal={handleModal} postDelete={console.log("a")} />
+        <PostModal
+          handleModal={handleModal}
+          postDelete={console.log("구현중 ..")}
+        />
       ) : (
         <></>
       )}
