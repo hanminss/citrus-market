@@ -1,0 +1,26 @@
+.contentWrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+  text-align: center;
+}
+
+.desc {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+  color: #767676;
+  margin: 30px 0 20px 0;
+}
+
+.backBtn {
+  background-color: #f26e22;
+  color: #fff;
+  border: none;
+  border-radius: 44px;
+  padding: 13px 25px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+}
