@@ -10,7 +10,7 @@ const SearchBody = ({ userData, keyword }) => {
         return (
           <Link
             className={styles.link}
-            to={`/otherPage/${item._id}`}
+            to={`/otherPage/${item.accountname}`}
             key={`user-card-key-${idx}`}
           >
             <UserCard user={item} keyword={keyword} />

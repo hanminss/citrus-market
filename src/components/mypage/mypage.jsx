@@ -50,38 +50,29 @@ const Mypage = () => {
     });
   }, []);
 
+  if (!myInfo || !products) return <div>Loading...</div>;
   return (
     <>
       <ThreeDotHeader />
       <Menu />
       <main className={styles.mypage_main}>
-        {myInfo ? (
-          <>
-            <MyPageInfo myInfo={myInfo} />
-            {products ? (
-              products.data ? (
-                <ProductContainer products={products.product} />
-              ) : (
-                ""
-              )
-            ) : (
-              ""
-            )}
-            <PostSection
-              accountname={myInfo.accountname}
-              token={token}
-              handleModal={handleModal}
-              selectedPost={selectedPost}
-            />
-          </>
+        <MyPageInfo myInfo={myInfo} />
+        {products.data ? (
+          <ProductContainer products={products.product} />
         ) : (
-          <p>Loading....</p>
+          <></>
         )}
+        <PostSection
+          accountname={myInfo.accountname}
+          token={token}
+          handleModal={handleModal}
+          selectedPost={selectedPost}
+        />
       </main>
       {modal ? (
         <PostModal handleModal={handleModal} postDelete={postDelete} />
       ) : (
-        ""
+        <></>
       )}
     </>
   );

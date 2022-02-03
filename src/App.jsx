@@ -41,7 +41,7 @@ const App = () => {
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypage/profile" element={<ProfileUpdate />} />
           <Route path="/mypage/product" element={<Product />} />
-          <Route path="/otherPage/:userID" element={<OtherPage />} />
+          <Route path="/otherPage/:accountname" element={<OtherPage />} />
           <Route path="/post/:postID" element={<Post />} />
           <Route path="*" element={<div>404</div>} />
         </Routes>

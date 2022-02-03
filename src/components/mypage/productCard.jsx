@@ -22,10 +22,18 @@ const ProductCard = ({ product }) => {
     } else return product.itemName;
   };
 
+  const getImage = () => {
+    if (product.itemImage.indexOf(API_END_POINT) !== -1)
+      return product.itemImage;
+    else if (product.itemImage.length > 50)
+      return `${API_END_POINT}/Ellipse.png`;
+    else return `${API_END_POINT}/${product.itemImage}`;
+  };
+
   return (
     <article>
       <div className={styles.imgWrap}>
-        <img src={`${API_END_POINT}/${product.itemImage}`} alt="" />
+        <img src={getImage()} alt="" />
       </div>
       <h3 className={styles.title}>{changeTitleForm()}</h3>
       <p className={styles.price}>{changePriceForm()}원</p>

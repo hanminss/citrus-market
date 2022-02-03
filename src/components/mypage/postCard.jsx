@@ -9,6 +9,12 @@ const PostCard = ({ post, handleModal, token }) => {
   const [hearted, setHearted] = useState(post.hearted);
   const [heartCount, setHeartCount] = useState(post.heartCount);
 
+  const getImage = (item) => {
+    if (item.indexOf(API_END_POINT) !== -1) return item;
+    else if (item.length > 50) return `${API_END_POINT}/Ellipse.png`;
+    else return `${API_END_POINT}/${item}`;
+  };
+
   const handleHart = () => {
     if (hearted) {
       unHeartPost(post.id, token) //
@@ -34,6 +40,7 @@ const PostCard = ({ post, handleModal, token }) => {
         .catch(() => alert("Network err"));
     }
   };
+
   return (
     <article className={styles.post_card}>
       <div className={styles.img_wrap}>
@@ -60,7 +67,7 @@ const PostCard = ({ post, handleModal, token }) => {
           ) : post.image.split(",").length === 1 ? (
             <img
               className={styles.single_img}
-              src={`${API_END_POINT}/${post.image}`}
+              src={getImage(post.image)}
               alt=""
             />
           ) : (
@@ -69,7 +76,7 @@ const PostCard = ({ post, handleModal, token }) => {
                 <img
                   key={key}
                   className={styles.multi_img}
-                  src={`${API_END_POINT}/${item}`}
+                  src={getImage(item)}
                   alt=""
                 />
               );
