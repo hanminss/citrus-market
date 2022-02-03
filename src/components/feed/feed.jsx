@@ -2,14 +2,16 @@ import React, { useRef, useState } from "react";
 import { useEffect } from "react/cjs/react.development";
 
 import { getCookie } from "../../util/cookie";
-import { searchUser } from "../../util/fetcher";
+import { getFollowerPost, searchUser } from "../../util/fetcher";
 import Menu from "../modules/menu/menu";
 import FeedHeader from "./feedHeader";
+import HaveFollow from "./haveFollow";
 import NoneFallow from "./noneFallow";
 import SearchBody from "./searchBody";
 import SearchHeader from "./searchHeader";
 
 const Feed = () => {
+  const [feedPost, setFeedPost] = useState([]);
   const [search, setSearch] = useState(false);
   const [userData, setUserData] = useState([]);
   const keyWordRef = useRef("");
@@ -22,6 +24,12 @@ const Feed = () => {
       setUserData([]);
     }
   }, [keyWordRef.current.value]);
+
+  useEffect(() => {
+    getFollowerPost(token) //
+      .then((res) => setFeedPost(res.data.posts))
+      .catch((err) => alert(err));
+  }, []);
 
   const getSearchUser = () => {
     if (keyWordRef.current.value) {
@@ -49,6 +57,8 @@ const Feed = () => {
       <Menu />
       {search ? (
         <SearchBody userData={userData} keyword={keyWordRef.current.value} />
+      ) : feedPost.length ? (
+        <HaveFollow feedPost={feedPost} token={token} />
       ) : (
         <NoneFallow setSearch={setSearch} />
       )}

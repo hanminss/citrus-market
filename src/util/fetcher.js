@@ -266,3 +266,10 @@ export const unFollowUser = async (accountName, token) => {
   );
   return result;
 };
+
+export const getFollowerPost = async (token) => {
+  const result = await axios(
+    createGetConfigWithTokenNoneData(`/post/feed`, token)
+  );
+  return result;
+};
