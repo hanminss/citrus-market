@@ -242,3 +242,13 @@ export const reportComment = async (postID, commentID, token) => {
   );
   return result;
 };
+
+export const searchUser = async (keyWord, token) => {
+  const result = await axios(
+    createGetConfigWithTokenNoneData(
+      `/user/searchuser/?keyword=${keyWord}`,
+      token
+    )
+  );
+  return result;
+};
