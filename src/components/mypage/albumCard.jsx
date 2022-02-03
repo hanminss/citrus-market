@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { API_END_POINT } from "../../constants";
 import styles from "./albumCard.module.css";
 const AlbumCard = ({ post }) => {
@@ -10,18 +11,20 @@ const AlbumCard = ({ post }) => {
   };
 
   return (
-    <div className={styles.img_wrap}>
-      <img className={styles.albumImg} src={getImage()} alt="" />
-      {imgArr.length > 1 ? (
-        <img
-          className={styles.layer}
-          src="/images/mypage/iccon-img-layers.png"
-          alt=""
-        />
-      ) : (
-        ""
-      )}
-    </div>
+    <Link to={`/post/${post.id}`}>
+      <div className={styles.img_wrap}>
+        <img className={styles.albumImg} src={getImage()} alt="" />
+        {imgArr.length > 1 ? (
+          <img
+            className={styles.layer}
+            src="/images/mypage/iccon-img-layers.png"
+            alt=""
+          />
+        ) : (
+          ""
+        )}
+      </div>
+    </Link>
   );
 };
 
