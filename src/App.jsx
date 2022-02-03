@@ -14,6 +14,7 @@ import { getCookie } from "./util/cookie";
 import ProfileUpdate from "./components/profileUpdate/profileUpdate";
 import Product from "./components/product/product";
 import Post from "./components/post/post";
+import OtherPage from "./components/otherPage/otherPage";
 
 const App = () => {
   const [isLogin, setIsLogin] = useState(false);
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypage/profile" element={<ProfileUpdate />} />
           <Route path="/mypage/product" element={<Product />} />
+          <Route path="/otherPage/:userID" element={<OtherPage />} />
           <Route path="/post/:postID" element={<Post />} />
           <Route path="*" element={<div>404</div>} />
         </Routes>

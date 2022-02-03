@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./searchHeader.module.css";
 
-const SearchHeader = ({ setSearch, keyWordRef }) => {
+const SearchHeader = ({ setSearch, keyWordRef, getSearchUser }) => {
   return (
     <header className={styles.header}>
       <article className={styles.feed_search_container}>
@@ -16,6 +16,7 @@ const SearchHeader = ({ setSearch, keyWordRef }) => {
           className={styles.searchInput}
           type="text"
           placeholder="계정 검색"
+          onInput={() => getSearchUser()}
         />
       </article>
     </header>

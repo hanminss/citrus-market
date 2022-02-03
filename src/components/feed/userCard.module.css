@@ -1,0 +1,43 @@
+.userCard {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.img_wrap {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 0.5px solid #dbdbdb;
+}
+
+.profileImg {
+  position: absolute;
+  width: 100px;
+  left: -50%;
+  top: -10%;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  margin-bottom: 6px;
+}
+
+.accountName {
+  font-size: 12px;
+  font-weight: 400;
+  color: #767676;
+}
+
+.accountName::before {
+  content: "@ ";
+}
+
+.keyWord {
+  color: #f26e22;
+}
