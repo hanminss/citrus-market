@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useEffect } from "react/cjs/react.development";
 import "./App.css";
 import Chat from "./components/chat/chat";
 import Feed from "./components/feed/feed";
