@@ -14,6 +14,10 @@
   top: 0;
 }
 
+.report_modal_out {
+  height: calc(100vh - 150px);
+}
+
 .modal {
   background-color: #fff;
   position: absolute;
@@ -22,6 +26,10 @@
   height: 140px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+}
+
+.reportModal {
+  height: 90px;
 }
 
 .modal_bar {

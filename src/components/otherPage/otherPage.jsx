@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react/cjs/react.development";
 import { getCookie } from "../../util/cookie";
-import { getMyInfo, getProducts } from "../../util/fetcher";
+import { getMyInfo, getProducts, reportPost } from "../../util/fetcher";
 import ThreeDotHeader from "../modules/header/threeDotHeader";
 import Menu from "../modules/menu/menu";
 import ProductContainer from "../mypage/productContainer";
@@ -46,6 +46,17 @@ const OtherPage = () => {
     setSelectedPost(id);
   };
 
+  const handleReportPost = () => {
+    reportPost(token, selectedPost) //
+      .then(() => alert("신고가 완료되었습니다."))
+      .catch((err) => alert(err))
+      .then(() => {
+        setSelectedPost("");
+        setModal(false);
+        document.body.style.overflow = "unset";
+      });
+  };
+
   if (!userInfo || !products) return <div>Loading...</div>;
 
   return (
@@ -69,7 +80,8 @@ const OtherPage = () => {
       {modal ? (
         <PostModal
           handleModal={handleModal}
-          postDelete={console.log("구현중 ..")}
+          author={true}
+          handleReportPost={handleReportPost}
         />
       ) : (
         <></>

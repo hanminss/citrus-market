@@ -70,7 +70,11 @@ const Mypage = () => {
         />
       </main>
       {modal ? (
-        <PostModal handleModal={handleModal} postDelete={postDelete} />
+        <PostModal
+          handleModal={handleModal}
+          postDelete={postDelete}
+          author={false}
+        />
       ) : (
         <></>
       )}
