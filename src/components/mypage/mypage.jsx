@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import React, { useState, useEffect } from "react";
 import { getCookie } from "../../util/cookie";
 import { deletePost, getMyInfo, getProducts } from "../../util/fetcher";
 import ThreeDotHeader from "../modules/header/threeDotHeader";
