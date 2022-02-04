@@ -281,7 +281,7 @@ export const reportPost = async (token, postID) => {
     },
   };
 
-  const result = axios(
+  const result = await axios(
     createPostConfigWithToken(`/post/${postID}/report`, body, token)
   );
 
