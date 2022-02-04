@@ -273,3 +273,17 @@ export const getFollowerPost = async (token) => {
   );
   return result;
 };
+
+export const reportPost = async (token, postID) => {
+  const body = {
+    report: {
+      post: postID,
+    },
+  };
+
+  const result = axios(
+    createPostConfigWithToken(`/post/${postID}/report`, body, token)
+  );
+
+  return result;
+};
