@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react/cjs/react.development";
 import { getCookie } from "../../util/cookie";
 import { getMyInfo, getProducts, reportPost } from "../../util/fetcher";
 import ThreeDotHeader from "../modules/header/threeDotHeader";

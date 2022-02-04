@@ -28,6 +28,7 @@
       "react-app/jest"
     ]
   },
+  "homepage": "https://affectionate-wing-96d3c9.netlify.app/",
   "browserslist": {
     "production": [
       ">0.2%",
