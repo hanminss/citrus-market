@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { API_END_POINT } from "../../constants";
 import styles from "./myPageInfo.module.css";
 
 const MyPageInfo = ({ myInfo }) => {
@@ -13,7 +14,7 @@ const MyPageInfo = ({ myInfo }) => {
         </div>
         <div className={styles.profile_img}>
           <img
-            src={`http://146.56.183.55:5050/${myInfo.image}`}
+            src={`${API_END_POINT}/${myInfo.image}`}
             alt="프로필 이미지"
             id="profile-img"
           />

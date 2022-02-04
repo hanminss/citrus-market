@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { join } from "../../util/fetcher";
 import Membership from "./membership";
 import Profile from "./profile";

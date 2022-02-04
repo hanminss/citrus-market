@@ -6,6 +6,7 @@ import MultiImg from "./multiImg";
 import { imgsUpload, postUpload } from "../../util/fetcher";
 import { getCookie } from "../../util/cookie";
 import { useNavigate } from "react-router-dom";
+import { API_END_POINT } from "../../constants";
 
 const Upload = () => {
   const textRef = useRef();
@@ -16,7 +17,7 @@ const Upload = () => {
   const [validPass, setValidPasss] = useState(false);
 
   const token = getCookie("pic_token");
-  const profile = "http://146.56.183.55:5050/" + getCookie("pic_profile");
+  const profile = API_END_POINT + getCookie("pic_profile");
 
   const handleResizeHeight = useCallback(() => {
     textRef.current.style.height = textRef.current.scrollHeight + "px";
