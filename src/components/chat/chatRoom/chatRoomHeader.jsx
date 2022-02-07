@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react/cjs/react.development";
 import styles from "./chatRoomHeader.module.css";
 
 const ChatRoomHeader = () => {
